@@ -1,6 +1,6 @@
 # MiniShimmer
 
-MiniShimmer is a simple to use shimmer reverb.
+MiniShimmer is a simple to use shimmer reverb build in JUCE 8.
 
 ## Build Instructions
 - Open .jucer file in Projucer
