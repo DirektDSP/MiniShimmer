@@ -2,6 +2,18 @@
 
 <Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
+    <Filter Include="MiniShimmer\Service">
+      <UniqueIdentifier>{4D5DCFA5-56CB-07DB-8AB5-D90B74B42B1D}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MiniShimmer\Assets">
+      <UniqueIdentifier>{85FD2F5E-C696-0711-6E03-35F58831C6B4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MiniShimmer\Source\signalsmith-stretch\dsp">
+      <UniqueIdentifier>{0F3A5159-45C0-A8E7-5CEC-A60903F6D8C6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MiniShimmer\Source\signalsmith-stretch">
+      <UniqueIdentifier>{6953CB66-F67D-248E-0EFB-73C3623F2A31}</UniqueIdentifier>
+    </Filter>
     <Filter Include="MiniShimmer\Source">
       <UniqueIdentifier>{F839DB0F-EEAB-E236-1905-0BD01255E9B3}</UniqueIdentifier>
     </Filter>
@@ -697,6 +709,12 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\Source\PresetManager.cpp">
+      <Filter>MiniShimmer\Service</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\ShimmerReverb.cpp">
+      <Filter>MiniShimmer\Source</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\Source\PluginProcessor.cpp">
       <Filter>MiniShimmer\Source</Filter>
     </ClCompile>
@@ -3505,6 +3523,12 @@
     <ClCompile Include="C:\JUCE\modules\juce_gui_extra\juce_gui_extra.mm">
       <Filter>JUCE Modules\juce_gui_extra</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\JuceLibraryCode\BinaryData.cpp">
+      <Filter>JUCE Library Code</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\JuceLibraryCode\BinaryData2.cpp">
+      <Filter>JUCE Library Code</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\JuceLibraryCode\include_juce_audio_basics.cpp">
       <Filter>JUCE Library Code</Filter>
     </ClCompile>
@@ -3558,6 +3582,57 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\Source\PresetManager.h">
+      <Filter>MiniShimmer\Service</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\PresetPanel.h">
+      <Filter>MiniShimmer\Service</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\signalsmith-stretch\dsp\common.h">
+      <Filter>MiniShimmer\Source\signalsmith-stretch\dsp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\signalsmith-stretch\dsp\curves.h">
+      <Filter>MiniShimmer\Source\signalsmith-stretch\dsp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\signalsmith-stretch\dsp\delay.h">
+      <Filter>MiniShimmer\Source\signalsmith-stretch\dsp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\signalsmith-stretch\dsp\envelopes.h">
+      <Filter>MiniShimmer\Source\signalsmith-stretch\dsp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\signalsmith-stretch\dsp\fft.h">
+      <Filter>MiniShimmer\Source\signalsmith-stretch\dsp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\signalsmith-stretch\dsp\filters.h">
+      <Filter>MiniShimmer\Source\signalsmith-stretch\dsp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\signalsmith-stretch\dsp\mix.h">
+      <Filter>MiniShimmer\Source\signalsmith-stretch\dsp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\signalsmith-stretch\dsp\perf.h">
+      <Filter>MiniShimmer\Source\signalsmith-stretch\dsp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\signalsmith-stretch\dsp\rates.h">
+      <Filter>MiniShimmer\Source\signalsmith-stretch\dsp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\signalsmith-stretch\dsp\spectral.h">
+      <Filter>MiniShimmer\Source\signalsmith-stretch\dsp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\signalsmith-stretch\dsp\windows.h">
+      <Filter>MiniShimmer\Source\signalsmith-stretch\dsp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\signalsmith-stretch\signalsmith-stretch.h">
+      <Filter>MiniShimmer\Source\signalsmith-stretch</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\MakeLogarithmicRange.h">
+      <Filter>MiniShimmer\Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\StyleSheet.h">
+      <Filter>MiniShimmer\Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\ShimmerReverb.h">
+      <Filter>MiniShimmer\Source</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\Source\PluginProcessor.h">
       <Filter>MiniShimmer\Source</Filter>
     </ClInclude>
@@ -7443,6 +7518,9 @@
     <ClInclude Include="C:\JUCE\modules\juce_gui_extra\juce_gui_extra.h">
       <Filter>JUCE Modules\juce_gui_extra</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\JuceLibraryCode\BinaryData.h">
+      <Filter>JUCE Library Code</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\JuceLibraryCode\JuceHeader.h">
       <Filter>JUCE Library Code</Filter>
     </ClInclude>
@@ -7451,6 +7529,75 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\..\Assets\bpChip.png">
+      <Filter>MiniShimmer\Assets</Filter>
+    </None>
+    <None Include="..\..\Assets\Chip.png">
+      <Filter>MiniShimmer\Assets</Filter>
+    </None>
+    <None Include="..\..\Assets\Chip1.png">
+      <Filter>MiniShimmer\Assets</Filter>
+    </None>
+    <None Include="..\..\Assets\compChip.png">
+      <Filter>MiniShimmer\Assets</Filter>
+    </None>
+    <None Include="..\..\Assets\FreezeIcon.png">
+      <Filter>MiniShimmer\Assets</Filter>
+    </None>
+    <None Include="..\..\Assets\FreezeIconOff.png">
+      <Filter>MiniShimmer\Assets</Filter>
+    </None>
+    <None Include="..\..\Assets\LittlePhatty.png">
+      <Filter>MiniShimmer\Assets</Filter>
+    </None>
+    <None Include="..\..\Assets\LittlePhatty_OFF.png">
+      <Filter>MiniShimmer\Assets</Filter>
+    </None>
+    <None Include="..\..\Assets\osb.ttf">
+      <Filter>MiniShimmer\Assets</Filter>
+    </None>
+    <None Include="..\..\Assets\slider.knob">
+      <Filter>MiniShimmer\Assets</Filter>
+    </None>
+    <None Include="..\..\Assets\slider.kns">
+      <Filter>MiniShimmer\Assets</Filter>
+    </None>
+    <None Include="..\..\Assets\Slider.png">
+      <Filter>MiniShimmer\Assets</Filter>
+    </None>
+    <None Include="..\..\Assets\sliderFilmstrip.png">
+      <Filter>MiniShimmer\Assets</Filter>
+    </None>
+    <None Include="..\..\Assets\Sonatom_bipo_100x100_101frames.png">
+      <Filter>MiniShimmer\Assets</Filter>
+    </None>
+    <None Include="..\..\Assets\Sonatom_bipo_111x111_101frames.png">
+      <Filter>MiniShimmer\Assets</Filter>
+    </None>
+    <None Include="..\..\Assets\SquareChipOff.png">
+      <Filter>MiniShimmer\Assets</Filter>
+    </None>
+    <None Include="..\..\Assets\SquareChipOn.png">
+      <Filter>MiniShimmer\Assets</Filter>
+    </None>
+    <None Include="..\..\Assets\Toggle.png">
+      <Filter>MiniShimmer\Assets</Filter>
+    </None>
+    <None Include="..\..\Assets\Toggle1.png">
+      <Filter>MiniShimmer\Assets</Filter>
+    </None>
+    <None Include="..\..\Source\signalsmith-stretch\dsp\LICENSE.txt">
+      <Filter>MiniShimmer\Source\signalsmith-stretch\dsp</Filter>
+    </None>
+    <None Include="..\..\Source\signalsmith-stretch\dsp\README.md">
+      <Filter>MiniShimmer\Source\signalsmith-stretch\dsp</Filter>
+    </None>
+    <None Include="..\..\Source\signalsmith-stretch\LICENSE.txt">
+      <Filter>MiniShimmer\Source\signalsmith-stretch</Filter>
+    </None>
+    <None Include="..\..\Source\signalsmith-stretch\README.md">
+      <Filter>MiniShimmer\Source\signalsmith-stretch</Filter>
+    </None>
     <None Include="C:\JUCE\modules\juce_audio_devices\native\oboe\src\common\README.md">
       <Filter>JUCE Modules\juce_audio_devices\native\oboe\src\common</Filter>
     </None>

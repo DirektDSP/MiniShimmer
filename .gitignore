@@ -1,0 +1,6 @@
+*.a
+*.ipch
+*.db
+*.lib
+/Builds
+*.exe

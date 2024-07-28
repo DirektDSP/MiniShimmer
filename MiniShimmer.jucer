@@ -1,9 +1,72 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <JUCERPROJECT id="AcwBib" name="MiniShimmer" projectType="audioplug" useAppConfig="0"
-              addUsingNamespaceToJuceHeader="0" jucerFormatVersion="1">
+              addUsingNamespaceToJuceHeader="1" jucerFormatVersion="1" companyName="DirektDSP"
+              companyCopyright="All Rights Reserved" companyEmail="direktdsp@gmail.com">
   <MAINGROUP id="mvazfX" name="MiniShimmer">
+    <GROUP id="{9223A53A-6C31-3CE5-D491-B22B9ED168D3}" name="Service">
+      <FILE id="X1okKG" name="PresetManager.cpp" compile="1" resource="0"
+            file="Source/PresetManager.cpp"/>
+      <FILE id="TxOcYV" name="PresetManager.h" compile="0" resource="0" file="Source/PresetManager.h"/>
+      <FILE id="DTxfYZ" name="PresetPanel.h" compile="0" resource="0" file="Source/PresetPanel.h"/>
+    </GROUP>
+    <GROUP id="{43D774AD-89EB-4E4C-69E7-02FF8D194BAB}" name="Assets">
+      <FILE id="ZiC9FA" name="bpChip.png" compile="0" resource="1" file="Assets/bpChip.png"/>
+      <FILE id="xLC1YB" name="Chip.png" compile="0" resource="1" file="Assets/Chip.png"/>
+      <FILE id="sMuYlC" name="Chip1.png" compile="0" resource="1" file="Assets/Chip1.png"/>
+      <FILE id="EhhC7m" name="compChip.png" compile="0" resource="1" file="Assets/compChip.png"/>
+      <FILE id="oTzZaG" name="FreezeIcon.png" compile="0" resource="1" file="Assets/FreezeIcon.png"/>
+      <FILE id="ZPbvPx" name="FreezeIconOff.png" compile="0" resource="1"
+            file="Assets/FreezeIconOff.png"/>
+      <FILE id="JJjGT7" name="LittlePhatty.png" compile="0" resource="1"
+            file="Assets/LittlePhatty.png"/>
+      <FILE id="yYFrY9" name="LittlePhatty_OFF.png" compile="0" resource="1"
+            file="Assets/LittlePhatty_OFF.png"/>
+      <FILE id="FHvSmR" name="osb.ttf" compile="0" resource="1" file="Assets/osb.ttf"/>
+      <FILE id="Nhnd3X" name="slider.knob" compile="0" resource="1" file="Assets/slider.knob"/>
+      <FILE id="XUxDib" name="slider.kns" compile="0" resource="1" file="Assets/slider.kns"/>
+      <FILE id="b5fwUf" name="Slider.png" compile="0" resource="1" file="Assets/Slider.png"/>
+      <FILE id="pHUNg8" name="sliderFilmstrip.png" compile="0" resource="1"
+            file="Assets/sliderFilmstrip.png"/>
+      <FILE id="Eio8C0" name="Sonatom_bipo_100x100_101frames.png" compile="0"
+            resource="1" file="Assets/Sonatom_bipo_100x100_101frames.png"/>
+      <FILE id="BXFgAO" name="Sonatom_bipo_111x111_101frames.png" compile="0"
+            resource="1" file="Assets/Sonatom_bipo_111x111_101frames.png"/>
+      <FILE id="bUvffJ" name="SquareChipOff.png" compile="0" resource="1"
+            file="Assets/SquareChipOff.png"/>
+      <FILE id="VyQVBL" name="SquareChipOn.png" compile="0" resource="1"
+            file="Assets/SquareChipOn.png"/>
+      <FILE id="O4CIjW" name="Toggle.png" compile="0" resource="1" file="Assets/Toggle.png"/>
+      <FILE id="rOc7h9" name="Toggle1.png" compile="0" resource="1" file="Assets/Toggle1.png"/>
+    </GROUP>
     <GROUP id="{F391187B-F9C2-CA17-9751-CF487F4BD3C8}" name="Source">
+      <GROUP id="{BF0C0F8C-D232-423A-49CA-A959E982AF03}" name="signalsmith-stretch">
+        <GROUP id="{736EB949-A506-E014-2547-07AF5F32BEA8}" name="dsp">
+          <FILE id="LC8Zuw" name="common.h" compile="0" resource="0" file="Source/signalsmith-stretch/dsp/common.h"/>
+          <FILE id="YbUFnj" name="curves.h" compile="0" resource="0" file="Source/signalsmith-stretch/dsp/curves.h"/>
+          <FILE id="qx5IGV" name="delay.h" compile="0" resource="0" file="Source/signalsmith-stretch/dsp/delay.h"/>
+          <FILE id="y6RFxt" name="envelopes.h" compile="0" resource="0" file="Source/signalsmith-stretch/dsp/envelopes.h"/>
+          <FILE id="b6iKm0" name="fft.h" compile="0" resource="0" file="Source/signalsmith-stretch/dsp/fft.h"/>
+          <FILE id="EC0F5U" name="filters.h" compile="0" resource="0" file="Source/signalsmith-stretch/dsp/filters.h"/>
+          <FILE id="YnjOkA" name="LICENSE.txt" compile="0" resource="1" file="Source/signalsmith-stretch/dsp/LICENSE.txt"/>
+          <FILE id="Gz9iqI" name="mix.h" compile="0" resource="0" file="Source/signalsmith-stretch/dsp/mix.h"/>
+          <FILE id="yT1uxL" name="perf.h" compile="0" resource="0" file="Source/signalsmith-stretch/dsp/perf.h"/>
+          <FILE id="ELgVjy" name="rates.h" compile="0" resource="0" file="Source/signalsmith-stretch/dsp/rates.h"/>
+          <FILE id="e1awO5" name="README.md" compile="0" resource="1" file="Source/signalsmith-stretch/dsp/README.md"/>
+          <FILE id="Dgi7pF" name="spectral.h" compile="0" resource="0" file="Source/signalsmith-stretch/dsp/spectral.h"/>
+          <FILE id="hk9XXk" name="windows.h" compile="0" resource="0" file="Source/signalsmith-stretch/dsp/windows.h"/>
+        </GROUP>
+        <FILE id="H6VoXR" name="LICENSE.txt" compile="0" resource="1" file="Source/signalsmith-stretch/LICENSE.txt"/>
+        <FILE id="cddXIt" name="README.md" compile="0" resource="1" file="Source/signalsmith-stretch/README.md"/>
+        <FILE id="cx8aVh" name="signalsmith-stretch.h" compile="0" resource="0"
+              file="Source/signalsmith-stretch/signalsmith-stretch.h"/>
+      </GROUP>
+      <FILE id="z1wPDF" name="MakeLogarithmicRange.h" compile="0" resource="0"
+            file="Source/MakeLogarithmicRange.h"/>
+      <FILE id="O6U7pT" name="StyleSheet.h" compile="0" resource="0" file="Source/StyleSheet.h"/>
+      <FILE id="WclSen" name="ShimmerReverb.cpp" compile="1" resource="0"
+            file="Source/ShimmerReverb.cpp"/>
+      <FILE id="hCN9H3" name="ShimmerReverb.h" compile="0" resource="0" file="Source/ShimmerReverb.h"/>
       <FILE id="NIILz5" name="PluginProcessor.cpp" compile="1" resource="0"
             file="Source/PluginProcessor.cpp"/>
       <FILE id="MhAJUy" name="PluginProcessor.h" compile="0" resource="0"
@@ -52,7 +115,8 @@
         <MODULEPATH id="juce_gui_extra" path="C:/JUCE/modules"/>
       </MODULEPATHS>
     </VS2022>
-    <XCODE_MAC targetFolder="Builds/MacOSX">
+    <XCODE_MAC targetFolder="Builds/MacOSX" extraDefs="JUCE_SILENCE_XCODE_15_LINKER_WARNING"
+               extraLinkerFlags="-Wl,-ld_classic">
       <CONFIGURATIONS>
         <CONFIGURATION isDebug="1" name="Debug" targetName="MiniShimmer"/>
         <CONFIGURATION isDebug="0" name="Release" targetName="MiniShimmer"/>

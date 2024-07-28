@@ -19,9 +19,15 @@ MiniShimmerAudioProcessor::MiniShimmerAudioProcessor()
                       #endif
                        .withOutput ("Output", juce::AudioChannelSet::stereo(), true)
                      #endif
-                       )
+                       ), apvts(*this, nullptr, "Parameters", createParameterLayout())
 #endif
 {
+
+    apvts.state.setProperty(Service::PresetManager::presetNameProperty, "", nullptr);
+    apvts.state.setProperty("version", ProjectInfo::versionString, nullptr);
+
+    presetManager = std::make_unique<Service::PresetManager>(apvts);
+
 }
 
 MiniShimmerAudioProcessor::~MiniShimmerAudioProcessor()
@@ -95,6 +101,14 @@ void MiniShimmerAudioProcessor::prepareToPlay (double sampleRate, int samplesPer
 {
     // Use this method as the place to do any pre-playback
     // initialisation that you need..
+
+    dsp::ProcessSpec spec;
+    spec.sampleRate = sampleRate;
+    spec.maximumBlockSize = samplesPerBlock;
+    spec.numChannels = getTotalNumOutputChannels();
+
+    shimmerReverb.prepare(spec);
+
 }
 
 void MiniShimmerAudioProcessor::releaseResources()
@@ -135,26 +149,51 @@ void MiniShimmerAudioProcessor::processBlock (juce::AudioBuffer<float>& buffer, 
     auto totalNumInputChannels  = getTotalNumInputChannels();
     auto totalNumOutputChannels = getTotalNumOutputChannels();
 
-    // In case we have more outputs than inputs, this code clears any output
-    // channels that didn't contain input data, (because these aren't
-    // guaranteed to be empty - they may contain garbage).
-    // This is here to avoid people getting screaming feedback
-    // when they first compile a plugin, but obviously you don't need to keep
-    // this code if your algorithm always overwrites all the output channels.
-    for (auto i = totalNumInputChannels; i < totalNumOutputChannels; ++i)
-        buffer.clear (i, 0, buffer.getNumSamples());
+    // FETCH PARAMETERS =====================================================================
 
-    // This is the place where you'd normally do the guts of your plugin's
-    // audio processing...
-    // Make sure to reset the state if your inner loop is processing
-    // the samples and the outer loop is handling the channels.
-    // Alternatively, you can process the samples with the channels
-    // interleaved by keeping the same state.
-    for (int channel = 0; channel < totalNumInputChannels; ++channel)
-    {
-        auto* channelData = buffer.getWritePointer (channel);
+    auto in = apvts.getRawParameterValue("IN")->load();
+    auto out = apvts.getRawParameterValue("OUT")->load();
+    auto bypass = apvts.getRawParameterValue("BYPASS")->load();
+    auto roomSize = apvts.getRawParameterValue("ROOM_SIZE")->load();
+    auto damping = apvts.getRawParameterValue("DAMPING")->load();
+    auto wetLevel = apvts.getRawParameterValue("WET")->load();
+    auto dryLevel = apvts.getRawParameterValue("DRY")->load();
+    auto width = apvts.getRawParameterValue("WIDTH")->load();
+    auto freeze = apvts.getRawParameterValue("FREEZE")->load();
+    int pitch = apvts.getRawParameterValue("PITCH")->load();
 
-        // ..do something to the data...
+    // END PARAMETERS =======================================================================
+    if (!bypass) {
+
+        for (int channel = 0; channel < totalNumInputChannels; ++channel)
+        {
+            auto* channelData = buffer.getWritePointer(channel);
+            // Apply input gain
+            for (int sample = 0; sample < buffer.getNumSamples(); ++sample) {
+                channelData[sample] *= in;
+            }
+        }
+
+
+        // REVERB ================================================================================
+        for (auto i = totalNumInputChannels; i < totalNumOutputChannels; ++i)
+            buffer.clear(i, 0, buffer.getNumSamples());
+
+        shimmerReverb.setPitchShift(pitch);
+        shimmerReverb.setReverbParameters(roomSize, damping, wetLevel, dryLevel, width, freeze);
+        shimmerReverb.processAudioBlock(buffer);
+
+        // END REVERB ============================================================================
+
+
+        for (int channel = 0; channel < totalNumInputChannels; ++channel)
+        {
+            auto* channelData = buffer.getWritePointer(channel);
+            // Apply output gain 
+            for (int sample = 0; sample < buffer.getNumSamples(); ++sample) {
+                channelData[sample] *= out;
+            }
+        }
     }
 }
 
@@ -166,7 +205,12 @@ bool MiniShimmerAudioProcessor::hasEditor() const
 
 juce::AudioProcessorEditor* MiniShimmerAudioProcessor::createEditor()
 {
-    return new MiniShimmerAudioProcessorEditor (*this);
+    #ifdef NDEBUG // NDEBUG is defined by default in release builds
+        //return new MiniShimmerAudioProcessorEditor(*this); // Return the editor in release mode
+    return new GenericAudioProcessorEditor(*this);
+    #else
+        return new GenericAudioProcessorEditor(*this); // Return the editor in debug mode
+    #endif
 }
 
 //==============================================================================
@@ -175,12 +219,24 @@ void MiniShimmerAudioProcessor::getStateInformation (juce::MemoryBlock& destData
     // You should use this method to store your parameters in the memory block.
     // You could do that either as raw data, or use the XML or ValueTree classes
     // as intermediaries to make it easy to save and load complex data.
+
+
+    auto state = apvts.copyState();
+    std::unique_ptr<juce::XmlElement> xml(state.createXml());
+    copyXmlToBinary(*xml, destData);
 }
 
 void MiniShimmerAudioProcessor::setStateInformation (const void* data, int sizeInBytes)
 {
     // You should use this method to restore your parameters from this memory block,
     // whose contents will have been created by the getStateInformation() call.
+
+
+    std::unique_ptr<juce::XmlElement> xmlState(getXmlFromBinary(data, sizeInBytes));
+
+    if (xmlState.get() != nullptr)
+        if (xmlState->hasTagName(apvts.state.getType()))
+            apvts.replaceState(juce::ValueTree::fromXml(*xmlState));
 }
 
 //==============================================================================

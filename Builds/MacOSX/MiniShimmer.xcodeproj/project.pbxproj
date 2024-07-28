@@ -32,6 +32,7 @@
 		1EE5889F84F8AD5FF63DB1D7 /* CoreAudio.framework */ = {isa = PBXBuildFile; fileRef = 9424FE5B919260B0669A0900; };
 		257551AF2CFE9D4DD2C6A9E7 /* include_juce_core_CompilationTime.cpp */ = {isa = PBXBuildFile; fileRef = 29E001954230B6741F8953C6; };
 		2E6F277C10E227D3C7392212 /* Standalone Plugin */ = {isa = PBXBuildFile; fileRef = 426A5224010E555E2E601DAE; };
+		2FDF941C462EAA1A92530279 /* BinaryData.cpp */ = {isa = PBXBuildFile; fileRef = 36920D4FAE727DAB6BF99846; };
 		3832AD7E791B7BF32080B9A4 /* AudioToolbox.framework */ = {isa = PBXBuildFile; fileRef = 4692C817E9E8923CAB7E7512; };
 		3CF13F78B62EA67A6614C5FF /* juce_VST3ManifestHelper.mm */ = {isa = PBXBuildFile; fileRef = E255B2E200991760FD06E22B; settings = { COMPILER_FLAGS = "-fobjc-arc -w -DJUCE_SKIP_PRECOMPILED_HEADER"; }; };
 		40AAF7A7C49AAD441800888B /* DiscRecording.framework */ = {isa = PBXBuildFile; fileRef = E6CB2C5E8CE6BA9432662EAE; };
@@ -43,10 +44,12 @@
 		58B74501108D852A26AE4892 /* IOKit.framework */ = {isa = PBXBuildFile; fileRef = 7A66D45A6C94F0C007DCF89D; };
 		67E0FE4387B222956E2662F4 /* CoreMIDI.framework */ = {isa = PBXBuildFile; fileRef = F6A83E6499F56B94C63F12AE; };
 		74D3C78850704A43CA0E71D9 /* WebKit.framework */ = {isa = PBXBuildFile; fileRef = 5496DD707780406DA8B993E9; };
+		788E39C82408B848E7470ECA /* BinaryData2.cpp */ = {isa = PBXBuildFile; fileRef = FD03BE83FFB39D859B6B15E8; };
 		859A944F4701FF25FF63F469 /* include_juce_audio_plugin_client_VST3.mm */ = {isa = PBXBuildFile; fileRef = 3C34CA14D15421BA9E0C8978; };
 		8DDE41F7EE07D09F74B9ED50 /* CoreAudioKit.framework */ = {isa = PBXBuildFile; fileRef = AEF48D31CE2217B35BB82B1E; };
 		8FB8F6A65A8CB0A67F21D64B /* MetalKit.framework */ = {isa = PBXBuildFile; fileRef = 9BB72078956E53235888FC77; settings = { ATTRIBUTES = (Weak, ); }; };
 		9077D86243033B8C8A0C983D /* RecentFilesMenuTemplate.nib */ = {isa = PBXBuildFile; fileRef = E6FDB608E4C08536F1B1211D; };
+		971949A3A7910A1FB4DC09CF /* ShimmerReverb.cpp */ = {isa = PBXBuildFile; fileRef = 0D5F3E088B9C6E3C3939817E; };
 		9CBEFB2DECEC26EAF493A1C5 /* Metal.framework */ = {isa = PBXBuildFile; fileRef = A0703B7961EF3740B9E3C159; settings = { ATTRIBUTES = (Weak, ); }; };
 		A20D1CBAFACE693B2681BE3A /* include_juce_dsp.mm */ = {isa = PBXBuildFile; fileRef = 5D7D998ED80C95404227E0A0; };
 		A23F2BA57B9B8AE25C14D68C /* include_juce_audio_processors_lv2_libs.cpp */ = {isa = PBXBuildFile; fileRef = F5435CB9AE410F19E4489E49; };
@@ -61,6 +64,7 @@
 		D7CCCA5AEB68F43471A71507 /* include_juce_audio_plugin_client_AU_1.mm */ = {isa = PBXBuildFile; fileRef = 2198684C2B91770F5800DE81; };
 		D7F1B639BABF2D06F942F6A3 /* include_juce_audio_plugin_client_ARA.cpp */ = {isa = PBXBuildFile; fileRef = 570BE42C8BE7978A8CE4BD41; };
 		D86700E67B4591998E843C39 /* PluginEditor.cpp */ = {isa = PBXBuildFile; fileRef = A46D07A970EB08100120DA5A; };
+		DF1AF8EB98141EF810F83F36 /* PresetManager.cpp */ = {isa = PBXBuildFile; fileRef = F40E18297B7FC32BFBB1E660; };
 		DF6FB311ADC54A89AA899144 /* include_juce_audio_utils.mm */ = {isa = PBXBuildFile; fileRef = 6FE14CE0719E5640311F9AB6; };
 		E34FD7B478CDAE49A8645DC0 /* AU */ = {isa = PBXBuildFile; fileRef = FCB2E04488B6C071B7B2D453; };
 		E6C8BB7CB517F331F1452619 /* QuartzCore.framework */ = {isa = PBXBuildFile; fileRef = 05DAB1EC16F75B28450EF952; };
@@ -75,67 +79,112 @@
 /* Begin PBXFileReference section */
 		05DAB1EC16F75B28450EF952 /* QuartzCore.framework */ /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		06377D66C98F2E1D05DFC169 /* Info-VST3.plist */ /* Info-VST3.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Info-VST3.plist"; path = "Info-VST3.plist"; sourceTree = SOURCE_ROOT; };
+		0A23893A4BFE211154B4497A /* curves.h */ /* curves.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = curves.h; path = "../../Source/signalsmith-stretch/dsp/curves.h"; sourceTree = SOURCE_ROOT; };
+		0C9EE122D58AD1889C95B2FC /* spectral.h */ /* spectral.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = spectral.h; path = "../../Source/signalsmith-stretch/dsp/spectral.h"; sourceTree = SOURCE_ROOT; };
 		0CB424E460E790DDB13727A7 /* Foundation.framework */ /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		0D5F3E088B9C6E3C3939817E /* ShimmerReverb.cpp */ /* ShimmerReverb.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = ShimmerReverb.cpp; path = ../../Source/ShimmerReverb.cpp; sourceTree = SOURCE_ROOT; };
 		12BF35B61BC92C237E95A8D1 /* include_juce_graphics_Harfbuzz.cpp */ /* include_juce_graphics_Harfbuzz.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = include_juce_graphics_Harfbuzz.cpp; path = ../../JuceLibraryCode/include_juce_graphics_Harfbuzz.cpp; sourceTree = SOURCE_ROOT; };
 		14BE8196747F5DFD7BD58895 /* VST3 */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MiniShimmer.vst3; sourceTree = BUILT_PRODUCTS_DIR; };
 		1FD3CE3DCAAA309D175BA7DA /* PluginProcessor.h */ /* PluginProcessor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PluginProcessor.h; path = ../../Source/PluginProcessor.h; sourceTree = SOURCE_ROOT; };
 		2198684C2B91770F5800DE81 /* include_juce_audio_plugin_client_AU_1.mm */ /* include_juce_audio_plugin_client_AU_1.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = include_juce_audio_plugin_client_AU_1.mm; path = ../../JuceLibraryCode/include_juce_audio_plugin_client_AU_1.mm; sourceTree = SOURCE_ROOT; };
 		25A72E38B746DDF7980B50D3 /* include_juce_gui_basics.mm */ /* include_juce_gui_basics.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = include_juce_gui_basics.mm; path = ../../JuceLibraryCode/include_juce_gui_basics.mm; sourceTree = SOURCE_ROOT; };
+		297F90C89F187747103CB3CD /* Chip1.png */ /* Chip1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Chip1.png; path = ../../Assets/Chip1.png; sourceTree = SOURCE_ROOT; };
 		29E001954230B6741F8953C6 /* include_juce_core_CompilationTime.cpp */ /* include_juce_core_CompilationTime.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = include_juce_core_CompilationTime.cpp; path = ../../JuceLibraryCode/include_juce_core_CompilationTime.cpp; sourceTree = SOURCE_ROOT; };
 		3351609C758863AB689E7D06 /* juce_events */ /* juce_events */ = {isa = PBXFileReference; lastKnownFileType = folder; name = juce_events; path = "~/JUCE/modules/juce_events"; sourceTree = "<absolute>"; };
+		36920D4FAE727DAB6BF99846 /* BinaryData.cpp */ /* BinaryData.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = BinaryData.cpp; path = ../../JuceLibraryCode/BinaryData.cpp; sourceTree = SOURCE_ROOT; };
+		3BEB3758538D24A13E9E7D79 /* envelopes.h */ /* envelopes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = envelopes.h; path = "../../Source/signalsmith-stretch/dsp/envelopes.h"; sourceTree = SOURCE_ROOT; };
 		3C095C80BEE3D17F5A83930C /* include_juce_graphics.mm */ /* include_juce_graphics.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = include_juce_graphics.mm; path = ../../JuceLibraryCode/include_juce_graphics.mm; sourceTree = SOURCE_ROOT; };
 		3C34CA14D15421BA9E0C8978 /* include_juce_audio_plugin_client_VST3.mm */ /* include_juce_audio_plugin_client_VST3.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = include_juce_audio_plugin_client_VST3.mm; path = ../../JuceLibraryCode/include_juce_audio_plugin_client_VST3.mm; sourceTree = SOURCE_ROOT; };
 		3D6F6460947DD8B2BF246325 /* include_juce_audio_processors_ara.cpp */ /* include_juce_audio_processors_ara.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = include_juce_audio_processors_ara.cpp; path = ../../JuceLibraryCode/include_juce_audio_processors_ara.cpp; sourceTree = SOURCE_ROOT; };
+		3E76024EA49633599F7A1EB7 /* Sonatom_bipo_100x100_101frames.png */ /* Sonatom_bipo_100x100_101frames.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Sonatom_bipo_100x100_101frames.png; path = ../../Assets/Sonatom_bipo_100x100_101frames.png; sourceTree = SOURCE_ROOT; };
 		426A5224010E555E2E601DAE /* Standalone Plugin */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MiniShimmer.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		44534F84B3766651D61C183E /* PresetManager.h */ /* PresetManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PresetManager.h; path = ../../Source/PresetManager.h; sourceTree = SOURCE_ROOT; };
 		45C319F699AC94E253C46169 /* juce_dsp */ /* juce_dsp */ = {isa = PBXFileReference; lastKnownFileType = folder; name = juce_dsp; path = "~/JUCE/modules/juce_dsp"; sourceTree = "<absolute>"; };
 		4692C817E9E8923CAB7E7512 /* AudioToolbox.framework */ /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		497A77EC0DD82B9D19FB9A95 /* LittlePhatty_OFF.png */ /* LittlePhatty_OFF.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = LittlePhatty_OFF.png; path = ../../Assets/LittlePhatty_OFF.png; sourceTree = SOURCE_ROOT; };
 		4EDBB09791852BEE5E948F7D /* Info-VST3_Manifest_Helper.plist */ /* Info-VST3_Manifest_Helper.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Info-VST3_Manifest_Helper.plist"; path = "Info-VST3_Manifest_Helper.plist"; sourceTree = SOURCE_ROOT; };
+		5406AFEB776A722F244ADE8A /* filters.h */ /* filters.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = filters.h; path = "../../Source/signalsmith-stretch/dsp/filters.h"; sourceTree = SOURCE_ROOT; };
 		5496DD707780406DA8B993E9 /* WebKit.framework */ /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
+		55612B22096B92819077C329 /* rates.h */ /* rates.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = rates.h; path = "../../Source/signalsmith-stretch/dsp/rates.h"; sourceTree = SOURCE_ROOT; };
 		570BE42C8BE7978A8CE4BD41 /* include_juce_audio_plugin_client_ARA.cpp */ /* include_juce_audio_plugin_client_ARA.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = include_juce_audio_plugin_client_ARA.cpp; path = ../../JuceLibraryCode/include_juce_audio_plugin_client_ARA.cpp; sourceTree = SOURCE_ROOT; };
 		578B4EE299D5BE9C9AF6B38B /* JucePluginDefines.h */ /* JucePluginDefines.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = JucePluginDefines.h; path = ../../JuceLibraryCode/JucePluginDefines.h; sourceTree = SOURCE_ROOT; };
 		58EDED8D1FC1BF36A5799597 /* include_juce_gui_extra.mm */ /* include_juce_gui_extra.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = include_juce_gui_extra.mm; path = ../../JuceLibraryCode/include_juce_gui_extra.mm; sourceTree = SOURCE_ROOT; };
 		5CFEB0BB59A2B787E92704B4 /* include_juce_data_structures.mm */ /* include_juce_data_structures.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = include_juce_data_structures.mm; path = ../../JuceLibraryCode/include_juce_data_structures.mm; sourceTree = SOURCE_ROOT; };
 		5D7D998ED80C95404227E0A0 /* include_juce_dsp.mm */ /* include_juce_dsp.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = include_juce_dsp.mm; path = ../../JuceLibraryCode/include_juce_dsp.mm; sourceTree = SOURCE_ROOT; };
 		62C1C89A9570E73810592E3A /* juce_gui_basics */ /* juce_gui_basics */ = {isa = PBXFileReference; lastKnownFileType = folder; name = juce_gui_basics; path = "~/JUCE/modules/juce_gui_basics"; sourceTree = "<absolute>"; };
+		667A7555B40112CD538A6C9B /* windows.h */ /* windows.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = windows.h; path = "../../Source/signalsmith-stretch/dsp/windows.h"; sourceTree = SOURCE_ROOT; };
+		680225712003AC7FE65A50A0 /* Toggle.png */ /* Toggle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Toggle.png; path = ../../Assets/Toggle.png; sourceTree = SOURCE_ROOT; };
 		6BD769FDF1AB18340B79EB04 /* juce_audio_processors */ /* juce_audio_processors */ = {isa = PBXFileReference; lastKnownFileType = folder; name = juce_audio_processors; path = "~/JUCE/modules/juce_audio_processors"; sourceTree = "<absolute>"; };
+		6C3CBF7036EAD56A8DC67ADC /* bpChip.png */ /* bpChip.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bpChip.png; path = ../../Assets/bpChip.png; sourceTree = SOURCE_ROOT; };
+		6CF48BF89974362DDC1C4662 /* SquareChipOff.png */ /* SquareChipOff.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = SquareChipOff.png; path = ../../Assets/SquareChipOff.png; sourceTree = SOURCE_ROOT; };
+		6E2144022D051BB091D37677 /* PresetPanel.h */ /* PresetPanel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PresetPanel.h; path = ../../Source/PresetPanel.h; sourceTree = SOURCE_ROOT; };
 		6FE14CE0719E5640311F9AB6 /* include_juce_audio_utils.mm */ /* include_juce_audio_utils.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = include_juce_audio_utils.mm; path = ../../JuceLibraryCode/include_juce_audio_utils.mm; sourceTree = SOURCE_ROOT; };
+		769D53A53CF3150C54C0B87F /* FreezeIcon.png */ /* FreezeIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = FreezeIcon.png; path = ../../Assets/FreezeIcon.png; sourceTree = SOURCE_ROOT; };
+		77B74E6944A2B6F388F152C6 /* Chip.png */ /* Chip.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Chip.png; path = ../../Assets/Chip.png; sourceTree = SOURCE_ROOT; };
 		7A66D45A6C94F0C007DCF89D /* IOKit.framework */ /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
+		7B3A5FD3D4BD2E80DFF2D7EC /* slider.kns */ /* slider.kns */ = {isa = PBXFileReference; lastKnownFileType = file.kns; name = slider.kns; path = ../../Assets/slider.kns; sourceTree = SOURCE_ROOT; };
 		7BD1DF5E8ACC4E85A1EE083D /* PluginProcessor.cpp */ /* PluginProcessor.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = PluginProcessor.cpp; path = ../../Source/PluginProcessor.cpp; sourceTree = SOURCE_ROOT; };
 		7C1684DA15875F81A3DA4501 /* juce_gui_extra */ /* juce_gui_extra */ = {isa = PBXFileReference; lastKnownFileType = folder; name = juce_gui_extra; path = "~/JUCE/modules/juce_gui_extra"; sourceTree = "<absolute>"; };
+		7E165EB72CAD2097C69690C0 /* perf.h */ /* perf.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = perf.h; path = "../../Source/signalsmith-stretch/dsp/perf.h"; sourceTree = SOURCE_ROOT; };
 		8220D255DE84F45C2D2C722E /* juce_audio_devices */ /* juce_audio_devices */ = {isa = PBXFileReference; lastKnownFileType = folder; name = juce_audio_devices; path = "~/JUCE/modules/juce_audio_devices"; sourceTree = "<absolute>"; };
+		8451A108236C027EA21878E1 /* StyleSheet.h */ /* StyleSheet.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = StyleSheet.h; path = ../../Source/StyleSheet.h; sourceTree = SOURCE_ROOT; };
+		84D99A9B60328CAE4A2AB3E1 /* LICENSE.txt */ /* LICENSE.txt */ = {isa = PBXFileReference; lastKnownFileType = text.txt; name = LICENSE.txt; path = "../../Source/signalsmith-stretch/dsp/LICENSE.txt"; sourceTree = SOURCE_ROOT; };
 		871CEBCACF868E6476313799 /* Accelerate.framework */ /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
 		8990F87EBF9BA8EBD922C6CE /* PluginEditor.h */ /* PluginEditor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PluginEditor.h; path = ../../Source/PluginEditor.h; sourceTree = SOURCE_ROOT; };
+		8D4CBA22348161FAB2AE85A8 /* slider.knob */ /* slider.knob */ = {isa = PBXFileReference; lastKnownFileType = file.knob; name = slider.knob; path = ../../Assets/slider.knob; sourceTree = SOURCE_ROOT; };
 		9424FE5B919260B0669A0900 /* CoreAudio.framework */ /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
+		94808279B272130C41E86345 /* MakeLogarithmicRange.h */ /* MakeLogarithmicRange.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MakeLogarithmicRange.h; path = ../../Source/MakeLogarithmicRange.h; sourceTree = SOURCE_ROOT; };
 		9BB72078956E53235888FC77 /* MetalKit.framework */ /* MetalKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MetalKit.framework; path = System/Library/Frameworks/MetalKit.framework; sourceTree = SDKROOT; };
 		9C34424822B79E333A055CAB /* include_juce_core.mm */ /* include_juce_core.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = include_juce_core.mm; path = ../../JuceLibraryCode/include_juce_core.mm; sourceTree = SOURCE_ROOT; };
 		9DC268A225718997FA68406C /* VST3 Manifest Helper */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = juce_vst3_helper; sourceTree = BUILT_PRODUCTS_DIR; };
 		A0703B7961EF3740B9E3C159 /* Metal.framework */ /* Metal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Metal.framework; path = System/Library/Frameworks/Metal.framework; sourceTree = SDKROOT; };
+		A3687C8525E37B464202A2C8 /* osb.ttf */ /* osb.ttf */ = {isa = PBXFileReference; lastKnownFileType = file.ttf; name = osb.ttf; path = ../../Assets/osb.ttf; sourceTree = SOURCE_ROOT; };
 		A46D07A970EB08100120DA5A /* PluginEditor.cpp */ /* PluginEditor.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = PluginEditor.cpp; path = ../../Source/PluginEditor.cpp; sourceTree = SOURCE_ROOT; };
+		A648D97A1245AF610710BEB4 /* BinaryData.h */ /* BinaryData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = BinaryData.h; path = ../../JuceLibraryCode/BinaryData.h; sourceTree = SOURCE_ROOT; };
+		A68C95E14756D177AFF136A8 /* ShimmerReverb.h */ /* ShimmerReverb.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ShimmerReverb.h; path = ../../Source/ShimmerReverb.h; sourceTree = SOURCE_ROOT; };
 		AEF48D31CE2217B35BB82B1E /* CoreAudioKit.framework */ /* CoreAudioKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudioKit.framework; path = System/Library/Frameworks/CoreAudioKit.framework; sourceTree = SDKROOT; };
 		B31D8AC8C0D0B8356D0AA31A /* juce_audio_plugin_client */ /* juce_audio_plugin_client */ = {isa = PBXFileReference; lastKnownFileType = folder; name = juce_audio_plugin_client; path = "~/JUCE/modules/juce_audio_plugin_client"; sourceTree = "<absolute>"; };
+		B7AC7FB0844D0A0579F3B9F9 /* README.md */ /* README.md */ = {isa = PBXFileReference; lastKnownFileType = file.md; name = README.md; path = "../../Source/signalsmith-stretch/README.md"; sourceTree = SOURCE_ROOT; };
+		BA5FFF2E1831CB494AAD1682 /* FreezeIconOff.png */ /* FreezeIconOff.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = FreezeIconOff.png; path = ../../Assets/FreezeIconOff.png; sourceTree = SOURCE_ROOT; };
+		BC62257E0CCBF10936B7652F /* LICENSE.txt */ /* LICENSE.txt */ = {isa = PBXFileReference; lastKnownFileType = text.txt; name = LICENSE.txt; path = "../../Source/signalsmith-stretch/LICENSE.txt"; sourceTree = SOURCE_ROOT; };
+		C51FAF534095F6E8A05EFD73 /* mix.h */ /* mix.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = mix.h; path = "../../Source/signalsmith-stretch/dsp/mix.h"; sourceTree = SOURCE_ROOT; };
+		C6BA93134FCF65699D0365DA /* LittlePhatty.png */ /* LittlePhatty.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = LittlePhatty.png; path = ../../Assets/LittlePhatty.png; sourceTree = SOURCE_ROOT; };
 		CB3A1AB372E3C757D9158383 /* Info-Standalone_Plugin.plist */ /* Info-Standalone_Plugin.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Info-Standalone_Plugin.plist"; path = "Info-Standalone_Plugin.plist"; sourceTree = SOURCE_ROOT; };
 		CC42A87A3E8F887A1973F7E9 /* include_juce_events.mm */ /* include_juce_events.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = include_juce_events.mm; path = ../../JuceLibraryCode/include_juce_events.mm; sourceTree = SOURCE_ROOT; };
 		CDC1D2C3AAC7DC86DD303BEE /* include_juce_audio_basics.mm */ /* include_juce_audio_basics.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = include_juce_audio_basics.mm; path = ../../JuceLibraryCode/include_juce_audio_basics.mm; sourceTree = SOURCE_ROOT; };
+		D2738D8DC9928F1D61D93B6D /* delay.h */ /* delay.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = delay.h; path = "../../Source/signalsmith-stretch/dsp/delay.h"; sourceTree = SOURCE_ROOT; };
+		DBCC8467EB4ED98E4A1735AC /* sliderFilmstrip.png */ /* sliderFilmstrip.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = sliderFilmstrip.png; path = ../../Assets/sliderFilmstrip.png; sourceTree = SOURCE_ROOT; };
 		DDD693C7BA011E6DEC4F956A /* juce_data_structures */ /* juce_data_structures */ = {isa = PBXFileReference; lastKnownFileType = folder; name = juce_data_structures; path = "~/JUCE/modules/juce_data_structures"; sourceTree = "<absolute>"; };
 		E255B2E200991760FD06E22B /* juce_VST3ManifestHelper.mm */ /* juce_VST3ManifestHelper.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = juce_VST3ManifestHelper.mm; path = "$(HOME)/JUCE/modules/juce_audio_plugin_client/VST3/juce_VST3ManifestHelper.mm"; sourceTree = "<absolute>"; };
 		E260B3F92949DAE209F0DE94 /* juce_audio_formats */ /* juce_audio_formats */ = {isa = PBXFileReference; lastKnownFileType = folder; name = juce_audio_formats; path = "~/JUCE/modules/juce_audio_formats"; sourceTree = "<absolute>"; };
+		E29C4CF0F5D9AA132D7806A7 /* Slider.png */ /* Slider.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Slider.png; path = ../../Assets/Slider.png; sourceTree = SOURCE_ROOT; };
+		E2C4412F0E7AC99014ABDC92 /* README.md */ /* README.md */ = {isa = PBXFileReference; lastKnownFileType = file.md; name = README.md; path = "../../Source/signalsmith-stretch/dsp/README.md"; sourceTree = SOURCE_ROOT; };
 		E34CB92D69ED1D09BDB3207C /* juce_audio_utils */ /* juce_audio_utils */ = {isa = PBXFileReference; lastKnownFileType = folder; name = juce_audio_utils; path = "~/JUCE/modules/juce_audio_utils"; sourceTree = "<absolute>"; };
 		E4EC89EF25457065D6E0C4BF /* JuceHeader.h */ /* JuceHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = JuceHeader.h; path = ../../JuceLibraryCode/JuceHeader.h; sourceTree = SOURCE_ROOT; };
 		E6CB2C5E8CE6BA9432662EAE /* DiscRecording.framework */ /* DiscRecording.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DiscRecording.framework; path = System/Library/Frameworks/DiscRecording.framework; sourceTree = SDKROOT; };
 		E6FDB608E4C08536F1B1211D /* RecentFilesMenuTemplate.nib */ /* RecentFilesMenuTemplate.nib */ = {isa = PBXFileReference; lastKnownFileType = file.nib; name = RecentFilesMenuTemplate.nib; path = RecentFilesMenuTemplate.nib; sourceTree = SOURCE_ROOT; };
+		E77D53939DCA5AC16EF64E30 /* signalsmith-stretch.h */ /* signalsmith-stretch.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "signalsmith-stretch.h"; path = "../../Source/signalsmith-stretch/signalsmith-stretch.h"; sourceTree = SOURCE_ROOT; };
+		EA393DE6669793406E4AE0A3 /* Sonatom_bipo_111x111_101frames.png */ /* Sonatom_bipo_111x111_101frames.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Sonatom_bipo_111x111_101frames.png; path = ../../Assets/Sonatom_bipo_111x111_101frames.png; sourceTree = SOURCE_ROOT; };
 		EBAE5B87489FC2D4932CA999 /* Cocoa.framework */ /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		EC6FA0659A3176E55BDF03AF /* include_juce_audio_devices.mm */ /* include_juce_audio_devices.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = include_juce_audio_devices.mm; path = ../../JuceLibraryCode/include_juce_audio_devices.mm; sourceTree = SOURCE_ROOT; };
 		EC976735FECA233B66AE8207 /* include_juce_audio_formats.mm */ /* include_juce_audio_formats.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = include_juce_audio_formats.mm; path = ../../JuceLibraryCode/include_juce_audio_formats.mm; sourceTree = SOURCE_ROOT; };
 		EE5566644D63E8B19133E865 /* juce_audio_basics */ /* juce_audio_basics */ = {isa = PBXFileReference; lastKnownFileType = folder; name = juce_audio_basics; path = "~/JUCE/modules/juce_audio_basics"; sourceTree = "<absolute>"; };
 		EE8B2E5B91FA3172B6E1B9B9 /* Shared Code */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libMiniShimmer.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		EF4FBB94179FBB6BFE6F2871 /* juce_core */ /* juce_core */ = {isa = PBXFileReference; lastKnownFileType = folder; name = juce_core; path = "~/JUCE/modules/juce_core"; sourceTree = "<absolute>"; };
+		EF783870621F2FBD516C7B5B /* Toggle1.png */ /* Toggle1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Toggle1.png; path = ../../Assets/Toggle1.png; sourceTree = SOURCE_ROOT; };
+		F40B05A19F851E55FBECC40A /* common.h */ /* common.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = common.h; path = "../../Source/signalsmith-stretch/dsp/common.h"; sourceTree = SOURCE_ROOT; };
+		F40E18297B7FC32BFBB1E660 /* PresetManager.cpp */ /* PresetManager.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = PresetManager.cpp; path = ../../Source/PresetManager.cpp; sourceTree = SOURCE_ROOT; };
 		F4AC7FA19E98BB518FA95172 /* include_juce_audio_plugin_client_Standalone.cpp */ /* include_juce_audio_plugin_client_Standalone.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = include_juce_audio_plugin_client_Standalone.cpp; path = ../../JuceLibraryCode/include_juce_audio_plugin_client_Standalone.cpp; sourceTree = SOURCE_ROOT; };
 		F500C0E92B7432308CE582E7 /* include_juce_audio_plugin_client_AU_2.mm */ /* include_juce_audio_plugin_client_AU_2.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = include_juce_audio_plugin_client_AU_2.mm; path = ../../JuceLibraryCode/include_juce_audio_plugin_client_AU_2.mm; sourceTree = SOURCE_ROOT; };
 		F5435CB9AE410F19E4489E49 /* include_juce_audio_processors_lv2_libs.cpp */ /* include_juce_audio_processors_lv2_libs.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = include_juce_audio_processors_lv2_libs.cpp; path = ../../JuceLibraryCode/include_juce_audio_processors_lv2_libs.cpp; sourceTree = SOURCE_ROOT; };
+		F5F48A838FB1A931A0999CD4 /* fft.h */ /* fft.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = fft.h; path = "../../Source/signalsmith-stretch/dsp/fft.h"; sourceTree = SOURCE_ROOT; };
 		F6A83E6499F56B94C63F12AE /* CoreMIDI.framework */ /* CoreMIDI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMIDI.framework; path = System/Library/Frameworks/CoreMIDI.framework; sourceTree = SDKROOT; };
 		F839A87736131BF81C2AA223 /* include_juce_audio_processors.mm */ /* include_juce_audio_processors.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = include_juce_audio_processors.mm; path = ../../JuceLibraryCode/include_juce_audio_processors.mm; sourceTree = SOURCE_ROOT; };
+		F9AD3BF96CEFBACCB4149E59 /* SquareChipOn.png */ /* SquareChipOn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = SquareChipOn.png; path = ../../Assets/SquareChipOn.png; sourceTree = SOURCE_ROOT; };
+		FAA446C6E3BB807ACAAC9919 /* compChip.png */ /* compChip.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = compChip.png; path = ../../Assets/compChip.png; sourceTree = SOURCE_ROOT; };
 		FCB2E04488B6C071B7B2D453 /* AU */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MiniShimmer.component; sourceTree = BUILT_PRODUCTS_DIR; };
 		FCCA8637783EDFA765D0EC2B /* juce_graphics */ /* juce_graphics */ = {isa = PBXFileReference; lastKnownFileType = folder; name = juce_graphics; path = "~/JUCE/modules/juce_graphics"; sourceTree = "<absolute>"; };
+		FD03BE83FFB39D859B6B15E8 /* BinaryData2.cpp */ /* BinaryData2.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = BinaryData2.cpp; path = ../../JuceLibraryCode/BinaryData2.cpp; sourceTree = SOURCE_ROOT; };
 		FD70D2F66D3689C9CB3181A0 /* Security.framework */ /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		FD73A444EE2D02D664852305 /* AudioUnit.framework */ /* AudioUnit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioUnit.framework; path = System/Library/Frameworks/AudioUnit.framework; sourceTree = SDKROOT; };
 		FDD9530CF0A8ABDD992449E1 /* Info-AU.plist */ /* Info-AU.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Info-AU.plist"; path = "Info-AU.plist"; sourceTree = SOURCE_ROOT; };
@@ -245,9 +294,32 @@
 		0BF48BBC9490F270F9C637C3 /* MiniShimmer */ = {
 			isa = PBXGroup;
 			children = (
+				18262CD25398AAEA0C6DED7F,
+				74414B4CF45EE6FC9314E139,
 				8FC3E9D4A9FC68ED19B9F510,
 			);
 			name = MiniShimmer;
+			sourceTree = "<group>";
+		};
+		18262CD25398AAEA0C6DED7F /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				F40E18297B7FC32BFBB1E660,
+				44534F84B3766651D61C183E,
+				6E2144022D051BB091D37677,
+			);
+			name = Service;
+			sourceTree = "<group>";
+		};
+		324E2C601455CF00920D40C2 /* signalsmith-stretch */ = {
+			isa = PBXGroup;
+			children = (
+				BA9BE4CF358747E6816002CB,
+				BC62257E0CCBF10936B7652F,
+				B7AC7FB0844D0A0579F3B9F9,
+				E77D53939DCA5AC16EF64E30,
+			);
+			name = "signalsmith-stretch";
 			sourceTree = "<group>";
 		};
 		555FCCF3F6F267B634AB1F8F /* Frameworks */ = {
@@ -272,9 +344,40 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		74414B4CF45EE6FC9314E139 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				6C3CBF7036EAD56A8DC67ADC,
+				77B74E6944A2B6F388F152C6,
+				297F90C89F187747103CB3CD,
+				FAA446C6E3BB807ACAAC9919,
+				769D53A53CF3150C54C0B87F,
+				BA5FFF2E1831CB494AAD1682,
+				C6BA93134FCF65699D0365DA,
+				497A77EC0DD82B9D19FB9A95,
+				A3687C8525E37B464202A2C8,
+				8D4CBA22348161FAB2AE85A8,
+				7B3A5FD3D4BD2E80DFF2D7EC,
+				E29C4CF0F5D9AA132D7806A7,
+				DBCC8467EB4ED98E4A1735AC,
+				3E76024EA49633599F7A1EB7,
+				EA393DE6669793406E4AE0A3,
+				6CF48BF89974362DDC1C4662,
+				F9AD3BF96CEFBACCB4149E59,
+				680225712003AC7FE65A50A0,
+				EF783870621F2FBD516C7B5B,
+			);
+			name = Assets;
+			sourceTree = "<group>";
+		};
 		8FC3E9D4A9FC68ED19B9F510 /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				324E2C601455CF00920D40C2,
+				94808279B272130C41E86345,
+				8451A108236C027EA21878E1,
+				0D5F3E088B9C6E3C3939817E,
+				A68C95E14756D177AFF136A8,
 				7BD1DF5E8ACC4E85A1EE083D,
 				1FD3CE3DCAAA309D175BA7DA,
 				A46D07A970EB08100120DA5A,
@@ -286,6 +389,9 @@
 		B2882A2B52522EE890A64EE4 /* JUCE Library Code */ = {
 			isa = PBXGroup;
 			children = (
+				36920D4FAE727DAB6BF99846,
+				A648D97A1245AF610710BEB4,
+				FD03BE83FFB39D859B6B15E8,
 				CDC1D2C3AAC7DC86DD303BEE,
 				EC6FA0659A3176E55BDF03AF,
 				EC976735FECA233B66AE8207,
@@ -311,6 +417,26 @@
 				578B4EE299D5BE9C9AF6B38B,
 			);
 			name = "JUCE Library Code";
+			sourceTree = "<group>";
+		};
+		BA9BE4CF358747E6816002CB /* dsp */ = {
+			isa = PBXGroup;
+			children = (
+				F40B05A19F851E55FBECC40A,
+				0A23893A4BFE211154B4497A,
+				D2738D8DC9928F1D61D93B6D,
+				3BEB3758538D24A13E9E7D79,
+				F5F48A838FB1A931A0999CD4,
+				5406AFEB776A722F244ADE8A,
+				84D99A9B60328CAE4A2AB3E1,
+				C51FAF534095F6E8A05EFD73,
+				7E165EB72CAD2097C69690C0,
+				55612B22096B92819077C329,
+				E2C4412F0E7AC99014ABDC92,
+				0C9EE122D58AD1889C95B2FC,
+				667A7555B40112CD538A6C9B,
+			);
+			name = dsp;
 			sourceTree = "<group>";
 		};
 		D07E3002426177DEC4DE0520 /* JUCE Modules */ = {
@@ -458,7 +584,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
 				LastUpgradeCheck = 1340;
-				ORGANIZATIONNAME = "";
+				ORGANIZATIONNAME = "DirektDSP";
 				TargetAttributes = {
 					1B120CB65D7A1D23884D0BE4 = {
 						SystemCapabilities = {
@@ -700,8 +826,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DF1AF8EB98141EF810F83F36,
+				971949A3A7910A1FB4DC09CF,
 				C4F460C1E06E4F998DC09FA5,
 				D86700E67B4591998E843C39,
+				2FDF941C462EAA1A92530279,
+				788E39C82408B848E7470ECA,
 				F774B3D647AC36D1FEB59C94,
 				F97D38FB6C4F9E9D3CC7A690,
 				B48C3A4504E08D3D5DAB2668,
@@ -832,9 +962,9 @@
 					"JucePlugin_Enable_ARA=0",
 					"JucePlugin_Name=\\\"MiniShimmer\\\"",
 					"JucePlugin_Desc=\\\"MiniShimmer\\\"",
-					"JucePlugin_Manufacturer=\\\"yourcompany\\\"",
-					"JucePlugin_ManufacturerWebsite=\\\"www.yourcompany.com\\\"",
-					"JucePlugin_ManufacturerEmail=\\\"\\\"",
+					"JucePlugin_Manufacturer=\\\"DirektDSP\\\"",
+					"JucePlugin_ManufacturerWebsite=\\\"www.DirektDSP.com\\\"",
+					"JucePlugin_ManufacturerEmail=\\\"direktdsp@gmail.com\\\"",
 					"JucePlugin_ManufacturerCode=0x4d616e75",
 					"JucePlugin_PluginCode=0x41637762",
 					"JucePlugin_IsSynth=0",
@@ -853,8 +983,8 @@
 					"JucePlugin_AUExportPrefix=MiniShimmerAU",
 					"JucePlugin_AUExportPrefixQuoted=\\\"MiniShimmerAU\\\"",
 					"JucePlugin_AUManufacturerCode=JucePlugin_ManufacturerCode",
-					"JucePlugin_CFBundleIdentifier=com.yourcompany.MiniShimmer",
-					"JucePlugin_AAXIdentifier=com.yourcompany.MiniShimmer",
+					"JucePlugin_CFBundleIdentifier=com.DirektDSP.MiniShimmer",
+					"JucePlugin_AAXIdentifier=com.DirektDSP.MiniShimmer",
 					"JucePlugin_AAXManufacturerCode=JucePlugin_ManufacturerCode",
 					"JucePlugin_AAXProductId=JucePlugin_PluginCode",
 					"JucePlugin_AAXCategory=0",
@@ -862,15 +992,16 @@
 					"JucePlugin_AAXDisableMultiMono=0",
 					"JucePlugin_IAAType=0x61757278",
 					"JucePlugin_IAASubType=JucePlugin_PluginCode",
-					"JucePlugin_IAAName=\\\"yourcompany:\\ MiniShimmer\\\"",
+					"JucePlugin_IAAName=\\\"DirektDSP:\\ MiniShimmer\\\"",
 					"JucePlugin_VSTNumMidiInputs=16",
 					"JucePlugin_VSTNumMidiOutputs=16",
 					"JucePlugin_ARAContentTypes=0",
 					"JucePlugin_ARATransformationFlags=0",
-					"JucePlugin_ARAFactoryID=\\\"com.yourcompany.MiniShimmer.factory\\\"",
-					"JucePlugin_ARADocumentArchiveID=\\\"com.yourcompany.MiniShimmer.aradocumentarchive.1.0.0\\\"",
+					"JucePlugin_ARAFactoryID=\\\"com.DirektDSP.MiniShimmer.factory\\\"",
+					"JucePlugin_ARADocumentArchiveID=\\\"com.DirektDSP.MiniShimmer.aradocumentarchive.1.0.0\\\"",
 					"JucePlugin_ARACompatibleArchiveIDs=\\\"\\\"",
 					"JUCE_STANDALONE_APPLICATION=JucePlugin_Build_Standalone",
+					"JUCE_SILENCE_XCODE_15_LINKER_WARNING",
 					"JUCER_XCODE_MAC_F6D2F4CF=1",
 					"JUCE_APP_VERSION=1.0.0",
 					"JUCE_APP_VERSION_HEX=0x10000",
@@ -887,7 +1018,8 @@
 				INFOPLIST_PREPROCESS = NO;
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MTL_HEADER_SEARCH_PATHS = "$(HOME)/JUCE/modules/juce_audio_processors/format_types/VST3_SDK $(SRCROOT)/../../JuceLibraryCode $(HOME)/JUCE/modules $(HOME)/JUCE/modules/juce_audio_plugin_client/AU";
-				PRODUCT_BUNDLE_IDENTIFIER = com.yourcompany.MiniShimmer;
+				OTHER_LDFLAGS = "-Wl,-ld_classic";
+				PRODUCT_BUNDLE_IDENTIFIER = com.DirektDSP.MiniShimmer;
 				PRODUCT_NAME = "juce_vst3_helper";
 				USE_HEADERMAP = NO;
 				VALID_ARCHS = "i386 x86_64 arm64 arm64e";
@@ -938,9 +1070,9 @@
 					"JucePlugin_Enable_ARA=0",
 					"JucePlugin_Name=\\\"MiniShimmer\\\"",
 					"JucePlugin_Desc=\\\"MiniShimmer\\\"",
-					"JucePlugin_Manufacturer=\\\"yourcompany\\\"",
-					"JucePlugin_ManufacturerWebsite=\\\"www.yourcompany.com\\\"",
-					"JucePlugin_ManufacturerEmail=\\\"\\\"",
+					"JucePlugin_Manufacturer=\\\"DirektDSP\\\"",
+					"JucePlugin_ManufacturerWebsite=\\\"www.DirektDSP.com\\\"",
+					"JucePlugin_ManufacturerEmail=\\\"direktdsp@gmail.com\\\"",
 					"JucePlugin_ManufacturerCode=0x4d616e75",
 					"JucePlugin_PluginCode=0x41637762",
 					"JucePlugin_IsSynth=0",
@@ -959,8 +1091,8 @@
 					"JucePlugin_AUExportPrefix=MiniShimmerAU",
 					"JucePlugin_AUExportPrefixQuoted=\\\"MiniShimmerAU\\\"",
 					"JucePlugin_AUManufacturerCode=JucePlugin_ManufacturerCode",
-					"JucePlugin_CFBundleIdentifier=com.yourcompany.MiniShimmer",
-					"JucePlugin_AAXIdentifier=com.yourcompany.MiniShimmer",
+					"JucePlugin_CFBundleIdentifier=com.DirektDSP.MiniShimmer",
+					"JucePlugin_AAXIdentifier=com.DirektDSP.MiniShimmer",
 					"JucePlugin_AAXManufacturerCode=JucePlugin_ManufacturerCode",
 					"JucePlugin_AAXProductId=JucePlugin_PluginCode",
 					"JucePlugin_AAXCategory=0",
@@ -968,15 +1100,16 @@
 					"JucePlugin_AAXDisableMultiMono=0",
 					"JucePlugin_IAAType=0x61757278",
 					"JucePlugin_IAASubType=JucePlugin_PluginCode",
-					"JucePlugin_IAAName=\\\"yourcompany:\\ MiniShimmer\\\"",
+					"JucePlugin_IAAName=\\\"DirektDSP:\\ MiniShimmer\\\"",
 					"JucePlugin_VSTNumMidiInputs=16",
 					"JucePlugin_VSTNumMidiOutputs=16",
 					"JucePlugin_ARAContentTypes=0",
 					"JucePlugin_ARATransformationFlags=0",
-					"JucePlugin_ARAFactoryID=\\\"com.yourcompany.MiniShimmer.factory\\\"",
-					"JucePlugin_ARADocumentArchiveID=\\\"com.yourcompany.MiniShimmer.aradocumentarchive.1.0.0\\\"",
+					"JucePlugin_ARAFactoryID=\\\"com.DirektDSP.MiniShimmer.factory\\\"",
+					"JucePlugin_ARADocumentArchiveID=\\\"com.DirektDSP.MiniShimmer.aradocumentarchive.1.0.0\\\"",
 					"JucePlugin_ARACompatibleArchiveIDs=\\\"\\\"",
 					"JUCE_STANDALONE_APPLICATION=JucePlugin_Build_Standalone",
+					"JUCE_SILENCE_XCODE_15_LINKER_WARNING",
 					"JUCER_XCODE_MAC_F6D2F4CF=1",
 					"JUCE_APP_VERSION=1.0.0",
 					"JUCE_APP_VERSION_HEX=0x10000",
@@ -994,8 +1127,8 @@
 				LLVM_LTO = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MTL_HEADER_SEARCH_PATHS = "$(HOME)/JUCE/modules/juce_audio_processors/format_types/VST3_SDK $(SRCROOT)/../../JuceLibraryCode $(HOME)/JUCE/modules $(HOME)/JUCE/modules/juce_audio_plugin_client/AU";
-				OTHER_LDFLAGS = "-lMiniShimmer";
-				PRODUCT_BUNDLE_IDENTIFIER = com.yourcompany.MiniShimmer;
+				OTHER_LDFLAGS = "-lMiniShimmer -Wl,-ld_classic";
+				PRODUCT_BUNDLE_IDENTIFIER = com.DirektDSP.MiniShimmer;
 				PRODUCT_NAME = "MiniShimmer";
 				USE_HEADERMAP = NO;
 				VALID_ARCHS = "i386 x86_64 arm64 arm64e";
@@ -1046,9 +1179,9 @@
 					"JucePlugin_Enable_ARA=0",
 					"JucePlugin_Name=\\\"MiniShimmer\\\"",
 					"JucePlugin_Desc=\\\"MiniShimmer\\\"",
-					"JucePlugin_Manufacturer=\\\"yourcompany\\\"",
-					"JucePlugin_ManufacturerWebsite=\\\"www.yourcompany.com\\\"",
-					"JucePlugin_ManufacturerEmail=\\\"\\\"",
+					"JucePlugin_Manufacturer=\\\"DirektDSP\\\"",
+					"JucePlugin_ManufacturerWebsite=\\\"www.DirektDSP.com\\\"",
+					"JucePlugin_ManufacturerEmail=\\\"direktdsp@gmail.com\\\"",
 					"JucePlugin_ManufacturerCode=0x4d616e75",
 					"JucePlugin_PluginCode=0x41637762",
 					"JucePlugin_IsSynth=0",
@@ -1067,8 +1200,8 @@
 					"JucePlugin_AUExportPrefix=MiniShimmerAU",
 					"JucePlugin_AUExportPrefixQuoted=\\\"MiniShimmerAU\\\"",
 					"JucePlugin_AUManufacturerCode=JucePlugin_ManufacturerCode",
-					"JucePlugin_CFBundleIdentifier=com.yourcompany.MiniShimmer",
-					"JucePlugin_AAXIdentifier=com.yourcompany.MiniShimmer",
+					"JucePlugin_CFBundleIdentifier=com.DirektDSP.MiniShimmer",
+					"JucePlugin_AAXIdentifier=com.DirektDSP.MiniShimmer",
 					"JucePlugin_AAXManufacturerCode=JucePlugin_ManufacturerCode",
 					"JucePlugin_AAXProductId=JucePlugin_PluginCode",
 					"JucePlugin_AAXCategory=0",
@@ -1076,15 +1209,16 @@
 					"JucePlugin_AAXDisableMultiMono=0",
 					"JucePlugin_IAAType=0x61757278",
 					"JucePlugin_IAASubType=JucePlugin_PluginCode",
-					"JucePlugin_IAAName=\\\"yourcompany:\\ MiniShimmer\\\"",
+					"JucePlugin_IAAName=\\\"DirektDSP:\\ MiniShimmer\\\"",
 					"JucePlugin_VSTNumMidiInputs=16",
 					"JucePlugin_VSTNumMidiOutputs=16",
 					"JucePlugin_ARAContentTypes=0",
 					"JucePlugin_ARATransformationFlags=0",
-					"JucePlugin_ARAFactoryID=\\\"com.yourcompany.MiniShimmer.factory\\\"",
-					"JucePlugin_ARADocumentArchiveID=\\\"com.yourcompany.MiniShimmer.aradocumentarchive.1.0.0\\\"",
+					"JucePlugin_ARAFactoryID=\\\"com.DirektDSP.MiniShimmer.factory\\\"",
+					"JucePlugin_ARADocumentArchiveID=\\\"com.DirektDSP.MiniShimmer.aradocumentarchive.1.0.0\\\"",
 					"JucePlugin_ARACompatibleArchiveIDs=\\\"\\\"",
 					"JUCE_STANDALONE_APPLICATION=JucePlugin_Build_Standalone",
+					"JUCE_SILENCE_XCODE_15_LINKER_WARNING",
 					"JUCER_XCODE_MAC_F6D2F4CF=1",
 					"JUCE_APP_VERSION=1.0.0",
 					"JUCE_APP_VERSION_HEX=0x10000",
@@ -1105,9 +1239,9 @@
 				LLVM_LTO = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MTL_HEADER_SEARCH_PATHS = "$(HOME)/JUCE/modules/juce_audio_processors/format_types/VST3_SDK $(SRCROOT)/../../JuceLibraryCode $(HOME)/JUCE/modules $(HOME)/JUCE/modules/juce_audio_plugin_client/AU";
-				OTHER_LDFLAGS = "-bundle -lMiniShimmer";
+				OTHER_LDFLAGS = "-bundle -lMiniShimmer -Wl,-ld_classic";
 				OTHER_REZFLAGS = "-d ppc_$ppc -d i386_$i386 -d ppc64_$ppc64 -d x86_64_$x86_64 -d arm64_$arm64 -I /System/Library/Frameworks/CoreServices.framework/Frameworks/CarbonCore.framework/Versions/A/Headers -I \"$(DEVELOPER_DIR)/Extras/CoreAudio/AudioUnits/AUPublic/AUBase\" -I \"$(DEVELOPER_DIR)/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/Frameworks/AudioUnit.framework/Headers\"";
-				PRODUCT_BUNDLE_IDENTIFIER = com.yourcompany.MiniShimmer;
+				PRODUCT_BUNDLE_IDENTIFIER = com.DirektDSP.MiniShimmer;
 				PRODUCT_NAME = "MiniShimmer";
 				USE_HEADERMAP = NO;
 				VALID_ARCHS = "i386 x86_64 arm64 arm64e";
@@ -1159,9 +1293,9 @@
 					"JucePlugin_Enable_ARA=0",
 					"JucePlugin_Name=\\\"MiniShimmer\\\"",
 					"JucePlugin_Desc=\\\"MiniShimmer\\\"",
-					"JucePlugin_Manufacturer=\\\"yourcompany\\\"",
-					"JucePlugin_ManufacturerWebsite=\\\"www.yourcompany.com\\\"",
-					"JucePlugin_ManufacturerEmail=\\\"\\\"",
+					"JucePlugin_Manufacturer=\\\"DirektDSP\\\"",
+					"JucePlugin_ManufacturerWebsite=\\\"www.DirektDSP.com\\\"",
+					"JucePlugin_ManufacturerEmail=\\\"direktdsp@gmail.com\\\"",
 					"JucePlugin_ManufacturerCode=0x4d616e75",
 					"JucePlugin_PluginCode=0x41637762",
 					"JucePlugin_IsSynth=0",
@@ -1180,8 +1314,8 @@
 					"JucePlugin_AUExportPrefix=MiniShimmerAU",
 					"JucePlugin_AUExportPrefixQuoted=\\\"MiniShimmerAU\\\"",
 					"JucePlugin_AUManufacturerCode=JucePlugin_ManufacturerCode",
-					"JucePlugin_CFBundleIdentifier=com.yourcompany.MiniShimmer",
-					"JucePlugin_AAXIdentifier=com.yourcompany.MiniShimmer",
+					"JucePlugin_CFBundleIdentifier=com.DirektDSP.MiniShimmer",
+					"JucePlugin_AAXIdentifier=com.DirektDSP.MiniShimmer",
 					"JucePlugin_AAXManufacturerCode=JucePlugin_ManufacturerCode",
 					"JucePlugin_AAXProductId=JucePlugin_PluginCode",
 					"JucePlugin_AAXCategory=0",
@@ -1189,15 +1323,16 @@
 					"JucePlugin_AAXDisableMultiMono=0",
 					"JucePlugin_IAAType=0x61757278",
 					"JucePlugin_IAASubType=JucePlugin_PluginCode",
-					"JucePlugin_IAAName=\\\"yourcompany:\\ MiniShimmer\\\"",
+					"JucePlugin_IAAName=\\\"DirektDSP:\\ MiniShimmer\\\"",
 					"JucePlugin_VSTNumMidiInputs=16",
 					"JucePlugin_VSTNumMidiOutputs=16",
 					"JucePlugin_ARAContentTypes=0",
 					"JucePlugin_ARATransformationFlags=0",
-					"JucePlugin_ARAFactoryID=\\\"com.yourcompany.MiniShimmer.factory\\\"",
-					"JucePlugin_ARADocumentArchiveID=\\\"com.yourcompany.MiniShimmer.aradocumentarchive.1.0.0\\\"",
+					"JucePlugin_ARAFactoryID=\\\"com.DirektDSP.MiniShimmer.factory\\\"",
+					"JucePlugin_ARADocumentArchiveID=\\\"com.DirektDSP.MiniShimmer.aradocumentarchive.1.0.0\\\"",
 					"JucePlugin_ARACompatibleArchiveIDs=\\\"\\\"",
 					"JUCE_STANDALONE_APPLICATION=JucePlugin_Build_Standalone",
+					"JUCE_SILENCE_XCODE_15_LINKER_WARNING",
 					"JUCER_XCODE_MAC_F6D2F4CF=1",
 					"JUCE_APP_VERSION=1.0.0",
 					"JUCE_APP_VERSION_HEX=0x10000",
@@ -1214,8 +1349,8 @@
 				INFOPLIST_PREPROCESS = NO;
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MTL_HEADER_SEARCH_PATHS = "$(HOME)/JUCE/modules/juce_audio_processors/format_types/VST3_SDK $(SRCROOT)/../../JuceLibraryCode $(HOME)/JUCE/modules $(HOME)/JUCE/modules/juce_audio_plugin_client/AU";
-				OTHER_LDFLAGS = "-lMiniShimmer";
-				PRODUCT_BUNDLE_IDENTIFIER = com.yourcompany.MiniShimmer;
+				OTHER_LDFLAGS = "-lMiniShimmer -Wl,-ld_classic";
+				PRODUCT_BUNDLE_IDENTIFIER = com.DirektDSP.MiniShimmer;
 				PRODUCT_NAME = "MiniShimmer";
 				USE_HEADERMAP = NO;
 				VALID_ARCHS = "i386 x86_64 arm64 arm64e";
@@ -1266,9 +1401,9 @@
 					"JucePlugin_Enable_ARA=0",
 					"JucePlugin_Name=\\\"MiniShimmer\\\"",
 					"JucePlugin_Desc=\\\"MiniShimmer\\\"",
-					"JucePlugin_Manufacturer=\\\"yourcompany\\\"",
-					"JucePlugin_ManufacturerWebsite=\\\"www.yourcompany.com\\\"",
-					"JucePlugin_ManufacturerEmail=\\\"\\\"",
+					"JucePlugin_Manufacturer=\\\"DirektDSP\\\"",
+					"JucePlugin_ManufacturerWebsite=\\\"www.DirektDSP.com\\\"",
+					"JucePlugin_ManufacturerEmail=\\\"direktdsp@gmail.com\\\"",
 					"JucePlugin_ManufacturerCode=0x4d616e75",
 					"JucePlugin_PluginCode=0x41637762",
 					"JucePlugin_IsSynth=0",
@@ -1287,8 +1422,8 @@
 					"JucePlugin_AUExportPrefix=MiniShimmerAU",
 					"JucePlugin_AUExportPrefixQuoted=\\\"MiniShimmerAU\\\"",
 					"JucePlugin_AUManufacturerCode=JucePlugin_ManufacturerCode",
-					"JucePlugin_CFBundleIdentifier=com.yourcompany.MiniShimmer",
-					"JucePlugin_AAXIdentifier=com.yourcompany.MiniShimmer",
+					"JucePlugin_CFBundleIdentifier=com.DirektDSP.MiniShimmer",
+					"JucePlugin_AAXIdentifier=com.DirektDSP.MiniShimmer",
 					"JucePlugin_AAXManufacturerCode=JucePlugin_ManufacturerCode",
 					"JucePlugin_AAXProductId=JucePlugin_PluginCode",
 					"JucePlugin_AAXCategory=0",
@@ -1296,15 +1431,16 @@
 					"JucePlugin_AAXDisableMultiMono=0",
 					"JucePlugin_IAAType=0x61757278",
 					"JucePlugin_IAASubType=JucePlugin_PluginCode",
-					"JucePlugin_IAAName=\\\"yourcompany:\\ MiniShimmer\\\"",
+					"JucePlugin_IAAName=\\\"DirektDSP:\\ MiniShimmer\\\"",
 					"JucePlugin_VSTNumMidiInputs=16",
 					"JucePlugin_VSTNumMidiOutputs=16",
 					"JucePlugin_ARAContentTypes=0",
 					"JucePlugin_ARATransformationFlags=0",
-					"JucePlugin_ARAFactoryID=\\\"com.yourcompany.MiniShimmer.factory\\\"",
-					"JucePlugin_ARADocumentArchiveID=\\\"com.yourcompany.MiniShimmer.aradocumentarchive.1.0.0\\\"",
+					"JucePlugin_ARAFactoryID=\\\"com.DirektDSP.MiniShimmer.factory\\\"",
+					"JucePlugin_ARADocumentArchiveID=\\\"com.DirektDSP.MiniShimmer.aradocumentarchive.1.0.0\\\"",
 					"JucePlugin_ARACompatibleArchiveIDs=\\\"\\\"",
 					"JUCE_STANDALONE_APPLICATION=JucePlugin_Build_Standalone",
+					"JUCE_SILENCE_XCODE_15_LINKER_WARNING",
 					"JUCER_XCODE_MAC_F6D2F4CF=1",
 					"JUCE_APP_VERSION=1.0.0",
 					"JUCE_APP_VERSION_HEX=0x10000",
@@ -1325,8 +1461,8 @@
 				LLVM_LTO = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MTL_HEADER_SEARCH_PATHS = "$(HOME)/JUCE/modules/juce_audio_processors/format_types/VST3_SDK $(SRCROOT)/../../JuceLibraryCode $(HOME)/JUCE/modules $(HOME)/JUCE/modules/juce_audio_plugin_client/AU";
-				OTHER_LDFLAGS = "-bundle -lMiniShimmer";
-				PRODUCT_BUNDLE_IDENTIFIER = com.yourcompany.MiniShimmer;
+				OTHER_LDFLAGS = "-bundle -lMiniShimmer -Wl,-ld_classic";
+				PRODUCT_BUNDLE_IDENTIFIER = com.DirektDSP.MiniShimmer;
 				PRODUCT_NAME = "MiniShimmer";
 				USE_HEADERMAP = NO;
 				VALID_ARCHS = "i386 x86_64 arm64 arm64e";
@@ -1378,9 +1514,9 @@
 					"JucePlugin_Enable_ARA=0",
 					"JucePlugin_Name=\\\"MiniShimmer\\\"",
 					"JucePlugin_Desc=\\\"MiniShimmer\\\"",
-					"JucePlugin_Manufacturer=\\\"yourcompany\\\"",
-					"JucePlugin_ManufacturerWebsite=\\\"www.yourcompany.com\\\"",
-					"JucePlugin_ManufacturerEmail=\\\"\\\"",
+					"JucePlugin_Manufacturer=\\\"DirektDSP\\\"",
+					"JucePlugin_ManufacturerWebsite=\\\"www.DirektDSP.com\\\"",
+					"JucePlugin_ManufacturerEmail=\\\"direktdsp@gmail.com\\\"",
 					"JucePlugin_ManufacturerCode=0x4d616e75",
 					"JucePlugin_PluginCode=0x41637762",
 					"JucePlugin_IsSynth=0",
@@ -1399,8 +1535,8 @@
 					"JucePlugin_AUExportPrefix=MiniShimmerAU",
 					"JucePlugin_AUExportPrefixQuoted=\\\"MiniShimmerAU\\\"",
 					"JucePlugin_AUManufacturerCode=JucePlugin_ManufacturerCode",
-					"JucePlugin_CFBundleIdentifier=com.yourcompany.MiniShimmer",
-					"JucePlugin_AAXIdentifier=com.yourcompany.MiniShimmer",
+					"JucePlugin_CFBundleIdentifier=com.DirektDSP.MiniShimmer",
+					"JucePlugin_AAXIdentifier=com.DirektDSP.MiniShimmer",
 					"JucePlugin_AAXManufacturerCode=JucePlugin_ManufacturerCode",
 					"JucePlugin_AAXProductId=JucePlugin_PluginCode",
 					"JucePlugin_AAXCategory=0",
@@ -1408,15 +1544,16 @@
 					"JucePlugin_AAXDisableMultiMono=0",
 					"JucePlugin_IAAType=0x61757278",
 					"JucePlugin_IAASubType=JucePlugin_PluginCode",
-					"JucePlugin_IAAName=\\\"yourcompany:\\ MiniShimmer\\\"",
+					"JucePlugin_IAAName=\\\"DirektDSP:\\ MiniShimmer\\\"",
 					"JucePlugin_VSTNumMidiInputs=16",
 					"JucePlugin_VSTNumMidiOutputs=16",
 					"JucePlugin_ARAContentTypes=0",
 					"JucePlugin_ARATransformationFlags=0",
-					"JucePlugin_ARAFactoryID=\\\"com.yourcompany.MiniShimmer.factory\\\"",
-					"JucePlugin_ARADocumentArchiveID=\\\"com.yourcompany.MiniShimmer.aradocumentarchive.1.0.0\\\"",
+					"JucePlugin_ARAFactoryID=\\\"com.DirektDSP.MiniShimmer.factory\\\"",
+					"JucePlugin_ARADocumentArchiveID=\\\"com.DirektDSP.MiniShimmer.aradocumentarchive.1.0.0\\\"",
 					"JucePlugin_ARACompatibleArchiveIDs=\\\"\\\"",
 					"JUCE_STANDALONE_APPLICATION=JucePlugin_Build_Standalone",
+					"JUCE_SILENCE_XCODE_15_LINKER_WARNING",
 					"JUCER_XCODE_MAC_F6D2F4CF=1",
 					"JUCE_APP_VERSION=1.0.0",
 					"JUCE_APP_VERSION_HEX=0x10000",
@@ -1433,7 +1570,8 @@
 				INSTALL_PATH = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MTL_HEADER_SEARCH_PATHS = "$(HOME)/JUCE/modules/juce_audio_processors/format_types/VST3_SDK $(SRCROOT)/../../JuceLibraryCode $(HOME)/JUCE/modules $(HOME)/JUCE/modules/juce_audio_plugin_client/AU";
-				PRODUCT_BUNDLE_IDENTIFIER = com.yourcompany.MiniShimmer;
+				OTHER_LDFLAGS = "-Wl,-ld_classic";
+				PRODUCT_BUNDLE_IDENTIFIER = com.DirektDSP.MiniShimmer;
 				PRODUCT_NAME = "MiniShimmer";
 				SKIP_INSTALL = YES;
 				USE_HEADERMAP = NO;
@@ -1590,9 +1728,9 @@
 					"JucePlugin_Enable_ARA=0",
 					"JucePlugin_Name=\\\"MiniShimmer\\\"",
 					"JucePlugin_Desc=\\\"MiniShimmer\\\"",
-					"JucePlugin_Manufacturer=\\\"yourcompany\\\"",
-					"JucePlugin_ManufacturerWebsite=\\\"www.yourcompany.com\\\"",
-					"JucePlugin_ManufacturerEmail=\\\"\\\"",
+					"JucePlugin_Manufacturer=\\\"DirektDSP\\\"",
+					"JucePlugin_ManufacturerWebsite=\\\"www.DirektDSP.com\\\"",
+					"JucePlugin_ManufacturerEmail=\\\"direktdsp@gmail.com\\\"",
 					"JucePlugin_ManufacturerCode=0x4d616e75",
 					"JucePlugin_PluginCode=0x41637762",
 					"JucePlugin_IsSynth=0",
@@ -1611,8 +1749,8 @@
 					"JucePlugin_AUExportPrefix=MiniShimmerAU",
 					"JucePlugin_AUExportPrefixQuoted=\\\"MiniShimmerAU\\\"",
 					"JucePlugin_AUManufacturerCode=JucePlugin_ManufacturerCode",
-					"JucePlugin_CFBundleIdentifier=com.yourcompany.MiniShimmer",
-					"JucePlugin_AAXIdentifier=com.yourcompany.MiniShimmer",
+					"JucePlugin_CFBundleIdentifier=com.DirektDSP.MiniShimmer",
+					"JucePlugin_AAXIdentifier=com.DirektDSP.MiniShimmer",
 					"JucePlugin_AAXManufacturerCode=JucePlugin_ManufacturerCode",
 					"JucePlugin_AAXProductId=JucePlugin_PluginCode",
 					"JucePlugin_AAXCategory=0",
@@ -1620,15 +1758,16 @@
 					"JucePlugin_AAXDisableMultiMono=0",
 					"JucePlugin_IAAType=0x61757278",
 					"JucePlugin_IAASubType=JucePlugin_PluginCode",
-					"JucePlugin_IAAName=\\\"yourcompany:\\ MiniShimmer\\\"",
+					"JucePlugin_IAAName=\\\"DirektDSP:\\ MiniShimmer\\\"",
 					"JucePlugin_VSTNumMidiInputs=16",
 					"JucePlugin_VSTNumMidiOutputs=16",
 					"JucePlugin_ARAContentTypes=0",
 					"JucePlugin_ARATransformationFlags=0",
-					"JucePlugin_ARAFactoryID=\\\"com.yourcompany.MiniShimmer.factory\\\"",
-					"JucePlugin_ARADocumentArchiveID=\\\"com.yourcompany.MiniShimmer.aradocumentarchive.1.0.0\\\"",
+					"JucePlugin_ARAFactoryID=\\\"com.DirektDSP.MiniShimmer.factory\\\"",
+					"JucePlugin_ARADocumentArchiveID=\\\"com.DirektDSP.MiniShimmer.aradocumentarchive.1.0.0\\\"",
 					"JucePlugin_ARACompatibleArchiveIDs=\\\"\\\"",
 					"JUCE_STANDALONE_APPLICATION=JucePlugin_Build_Standalone",
+					"JUCE_SILENCE_XCODE_15_LINKER_WARNING",
 					"JUCER_XCODE_MAC_F6D2F4CF=1",
 					"JUCE_APP_VERSION=1.0.0",
 					"JUCE_APP_VERSION_HEX=0x10000",
@@ -1646,7 +1785,8 @@
 				LLVM_LTO = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MTL_HEADER_SEARCH_PATHS = "$(HOME)/JUCE/modules/juce_audio_processors/format_types/VST3_SDK $(SRCROOT)/../../JuceLibraryCode $(HOME)/JUCE/modules $(HOME)/JUCE/modules/juce_audio_plugin_client/AU";
-				PRODUCT_BUNDLE_IDENTIFIER = com.yourcompany.MiniShimmer;
+				OTHER_LDFLAGS = "-Wl,-ld_classic";
+				PRODUCT_BUNDLE_IDENTIFIER = com.DirektDSP.MiniShimmer;
 				PRODUCT_NAME = "MiniShimmer";
 				SKIP_INSTALL = YES;
 				USE_HEADERMAP = NO;
@@ -1698,9 +1838,9 @@
 					"JucePlugin_Enable_ARA=0",
 					"JucePlugin_Name=\\\"MiniShimmer\\\"",
 					"JucePlugin_Desc=\\\"MiniShimmer\\\"",
-					"JucePlugin_Manufacturer=\\\"yourcompany\\\"",
-					"JucePlugin_ManufacturerWebsite=\\\"www.yourcompany.com\\\"",
-					"JucePlugin_ManufacturerEmail=\\\"\\\"",
+					"JucePlugin_Manufacturer=\\\"DirektDSP\\\"",
+					"JucePlugin_ManufacturerWebsite=\\\"www.DirektDSP.com\\\"",
+					"JucePlugin_ManufacturerEmail=\\\"direktdsp@gmail.com\\\"",
 					"JucePlugin_ManufacturerCode=0x4d616e75",
 					"JucePlugin_PluginCode=0x41637762",
 					"JucePlugin_IsSynth=0",
@@ -1719,8 +1859,8 @@
 					"JucePlugin_AUExportPrefix=MiniShimmerAU",
 					"JucePlugin_AUExportPrefixQuoted=\\\"MiniShimmerAU\\\"",
 					"JucePlugin_AUManufacturerCode=JucePlugin_ManufacturerCode",
-					"JucePlugin_CFBundleIdentifier=com.yourcompany.MiniShimmer",
-					"JucePlugin_AAXIdentifier=com.yourcompany.MiniShimmer",
+					"JucePlugin_CFBundleIdentifier=com.DirektDSP.MiniShimmer",
+					"JucePlugin_AAXIdentifier=com.DirektDSP.MiniShimmer",
 					"JucePlugin_AAXManufacturerCode=JucePlugin_ManufacturerCode",
 					"JucePlugin_AAXProductId=JucePlugin_PluginCode",
 					"JucePlugin_AAXCategory=0",
@@ -1728,15 +1868,16 @@
 					"JucePlugin_AAXDisableMultiMono=0",
 					"JucePlugin_IAAType=0x61757278",
 					"JucePlugin_IAASubType=JucePlugin_PluginCode",
-					"JucePlugin_IAAName=\\\"yourcompany:\\ MiniShimmer\\\"",
+					"JucePlugin_IAAName=\\\"DirektDSP:\\ MiniShimmer\\\"",
 					"JucePlugin_VSTNumMidiInputs=16",
 					"JucePlugin_VSTNumMidiOutputs=16",
 					"JucePlugin_ARAContentTypes=0",
 					"JucePlugin_ARATransformationFlags=0",
-					"JucePlugin_ARAFactoryID=\\\"com.yourcompany.MiniShimmer.factory\\\"",
-					"JucePlugin_ARADocumentArchiveID=\\\"com.yourcompany.MiniShimmer.aradocumentarchive.1.0.0\\\"",
+					"JucePlugin_ARAFactoryID=\\\"com.DirektDSP.MiniShimmer.factory\\\"",
+					"JucePlugin_ARADocumentArchiveID=\\\"com.DirektDSP.MiniShimmer.aradocumentarchive.1.0.0\\\"",
 					"JucePlugin_ARACompatibleArchiveIDs=\\\"\\\"",
 					"JUCE_STANDALONE_APPLICATION=JucePlugin_Build_Standalone",
+					"JUCE_SILENCE_XCODE_15_LINKER_WARNING",
 					"JUCER_XCODE_MAC_F6D2F4CF=1",
 					"JUCE_APP_VERSION=1.0.0",
 					"JUCE_APP_VERSION_HEX=0x10000",
@@ -1756,9 +1897,9 @@
 				LIBRARY_STYLE = Bundle;
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MTL_HEADER_SEARCH_PATHS = "$(HOME)/JUCE/modules/juce_audio_processors/format_types/VST3_SDK $(SRCROOT)/../../JuceLibraryCode $(HOME)/JUCE/modules $(HOME)/JUCE/modules/juce_audio_plugin_client/AU";
-				OTHER_LDFLAGS = "-bundle -lMiniShimmer";
+				OTHER_LDFLAGS = "-bundle -lMiniShimmer -Wl,-ld_classic";
 				OTHER_REZFLAGS = "-d ppc_$ppc -d i386_$i386 -d ppc64_$ppc64 -d x86_64_$x86_64 -d arm64_$arm64 -I /System/Library/Frameworks/CoreServices.framework/Frameworks/CarbonCore.framework/Versions/A/Headers -I \"$(DEVELOPER_DIR)/Extras/CoreAudio/AudioUnits/AUPublic/AUBase\" -I \"$(DEVELOPER_DIR)/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/Frameworks/AudioUnit.framework/Headers\"";
-				PRODUCT_BUNDLE_IDENTIFIER = com.yourcompany.MiniShimmer;
+				PRODUCT_BUNDLE_IDENTIFIER = com.DirektDSP.MiniShimmer;
 				PRODUCT_NAME = "MiniShimmer";
 				USE_HEADERMAP = NO;
 				VALID_ARCHS = "i386 x86_64 arm64 arm64e";
@@ -1810,9 +1951,9 @@
 					"JucePlugin_Enable_ARA=0",
 					"JucePlugin_Name=\\\"MiniShimmer\\\"",
 					"JucePlugin_Desc=\\\"MiniShimmer\\\"",
-					"JucePlugin_Manufacturer=\\\"yourcompany\\\"",
-					"JucePlugin_ManufacturerWebsite=\\\"www.yourcompany.com\\\"",
-					"JucePlugin_ManufacturerEmail=\\\"\\\"",
+					"JucePlugin_Manufacturer=\\\"DirektDSP\\\"",
+					"JucePlugin_ManufacturerWebsite=\\\"www.DirektDSP.com\\\"",
+					"JucePlugin_ManufacturerEmail=\\\"direktdsp@gmail.com\\\"",
 					"JucePlugin_ManufacturerCode=0x4d616e75",
 					"JucePlugin_PluginCode=0x41637762",
 					"JucePlugin_IsSynth=0",
@@ -1831,8 +1972,8 @@
 					"JucePlugin_AUExportPrefix=MiniShimmerAU",
 					"JucePlugin_AUExportPrefixQuoted=\\\"MiniShimmerAU\\\"",
 					"JucePlugin_AUManufacturerCode=JucePlugin_ManufacturerCode",
-					"JucePlugin_CFBundleIdentifier=com.yourcompany.MiniShimmer",
-					"JucePlugin_AAXIdentifier=com.yourcompany.MiniShimmer",
+					"JucePlugin_CFBundleIdentifier=com.DirektDSP.MiniShimmer",
+					"JucePlugin_AAXIdentifier=com.DirektDSP.MiniShimmer",
 					"JucePlugin_AAXManufacturerCode=JucePlugin_ManufacturerCode",
 					"JucePlugin_AAXProductId=JucePlugin_PluginCode",
 					"JucePlugin_AAXCategory=0",
@@ -1840,15 +1981,16 @@
 					"JucePlugin_AAXDisableMultiMono=0",
 					"JucePlugin_IAAType=0x61757278",
 					"JucePlugin_IAASubType=JucePlugin_PluginCode",
-					"JucePlugin_IAAName=\\\"yourcompany:\\ MiniShimmer\\\"",
+					"JucePlugin_IAAName=\\\"DirektDSP:\\ MiniShimmer\\\"",
 					"JucePlugin_VSTNumMidiInputs=16",
 					"JucePlugin_VSTNumMidiOutputs=16",
 					"JucePlugin_ARAContentTypes=0",
 					"JucePlugin_ARATransformationFlags=0",
-					"JucePlugin_ARAFactoryID=\\\"com.yourcompany.MiniShimmer.factory\\\"",
-					"JucePlugin_ARADocumentArchiveID=\\\"com.yourcompany.MiniShimmer.aradocumentarchive.1.0.0\\\"",
+					"JucePlugin_ARAFactoryID=\\\"com.DirektDSP.MiniShimmer.factory\\\"",
+					"JucePlugin_ARADocumentArchiveID=\\\"com.DirektDSP.MiniShimmer.aradocumentarchive.1.0.0\\\"",
 					"JucePlugin_ARACompatibleArchiveIDs=\\\"\\\"",
 					"JUCE_STANDALONE_APPLICATION=JucePlugin_Build_Standalone",
+					"JUCE_SILENCE_XCODE_15_LINKER_WARNING",
 					"JUCER_XCODE_MAC_F6D2F4CF=1",
 					"JUCE_APP_VERSION=1.0.0",
 					"JUCE_APP_VERSION_HEX=0x10000",
@@ -1866,7 +2008,8 @@
 				LLVM_LTO = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MTL_HEADER_SEARCH_PATHS = "$(HOME)/JUCE/modules/juce_audio_processors/format_types/VST3_SDK $(SRCROOT)/../../JuceLibraryCode $(HOME)/JUCE/modules $(HOME)/JUCE/modules/juce_audio_plugin_client/AU";
-				PRODUCT_BUNDLE_IDENTIFIER = com.yourcompany.MiniShimmer;
+				OTHER_LDFLAGS = "-Wl,-ld_classic";
+				PRODUCT_BUNDLE_IDENTIFIER = com.DirektDSP.MiniShimmer;
 				PRODUCT_NAME = "juce_vst3_helper";
 				USE_HEADERMAP = NO;
 				VALID_ARCHS = "i386 x86_64 arm64 arm64e";
@@ -1917,9 +2060,9 @@
 					"JucePlugin_Enable_ARA=0",
 					"JucePlugin_Name=\\\"MiniShimmer\\\"",
 					"JucePlugin_Desc=\\\"MiniShimmer\\\"",
-					"JucePlugin_Manufacturer=\\\"yourcompany\\\"",
-					"JucePlugin_ManufacturerWebsite=\\\"www.yourcompany.com\\\"",
-					"JucePlugin_ManufacturerEmail=\\\"\\\"",
+					"JucePlugin_Manufacturer=\\\"DirektDSP\\\"",
+					"JucePlugin_ManufacturerWebsite=\\\"www.DirektDSP.com\\\"",
+					"JucePlugin_ManufacturerEmail=\\\"direktdsp@gmail.com\\\"",
 					"JucePlugin_ManufacturerCode=0x4d616e75",
 					"JucePlugin_PluginCode=0x41637762",
 					"JucePlugin_IsSynth=0",
@@ -1938,8 +2081,8 @@
 					"JucePlugin_AUExportPrefix=MiniShimmerAU",
 					"JucePlugin_AUExportPrefixQuoted=\\\"MiniShimmerAU\\\"",
 					"JucePlugin_AUManufacturerCode=JucePlugin_ManufacturerCode",
-					"JucePlugin_CFBundleIdentifier=com.yourcompany.MiniShimmer",
-					"JucePlugin_AAXIdentifier=com.yourcompany.MiniShimmer",
+					"JucePlugin_CFBundleIdentifier=com.DirektDSP.MiniShimmer",
+					"JucePlugin_AAXIdentifier=com.DirektDSP.MiniShimmer",
 					"JucePlugin_AAXManufacturerCode=JucePlugin_ManufacturerCode",
 					"JucePlugin_AAXProductId=JucePlugin_PluginCode",
 					"JucePlugin_AAXCategory=0",
@@ -1947,15 +2090,16 @@
 					"JucePlugin_AAXDisableMultiMono=0",
 					"JucePlugin_IAAType=0x61757278",
 					"JucePlugin_IAASubType=JucePlugin_PluginCode",
-					"JucePlugin_IAAName=\\\"yourcompany:\\ MiniShimmer\\\"",
+					"JucePlugin_IAAName=\\\"DirektDSP:\\ MiniShimmer\\\"",
 					"JucePlugin_VSTNumMidiInputs=16",
 					"JucePlugin_VSTNumMidiOutputs=16",
 					"JucePlugin_ARAContentTypes=0",
 					"JucePlugin_ARATransformationFlags=0",
-					"JucePlugin_ARAFactoryID=\\\"com.yourcompany.MiniShimmer.factory\\\"",
-					"JucePlugin_ARADocumentArchiveID=\\\"com.yourcompany.MiniShimmer.aradocumentarchive.1.0.0\\\"",
+					"JucePlugin_ARAFactoryID=\\\"com.DirektDSP.MiniShimmer.factory\\\"",
+					"JucePlugin_ARADocumentArchiveID=\\\"com.DirektDSP.MiniShimmer.aradocumentarchive.1.0.0\\\"",
 					"JucePlugin_ARACompatibleArchiveIDs=\\\"\\\"",
 					"JUCE_STANDALONE_APPLICATION=JucePlugin_Build_Standalone",
+					"JUCE_SILENCE_XCODE_15_LINKER_WARNING",
 					"JUCER_XCODE_MAC_F6D2F4CF=1",
 					"JUCE_APP_VERSION=1.0.0",
 					"JUCE_APP_VERSION_HEX=0x10000",
@@ -1975,8 +2119,8 @@
 				LIBRARY_STYLE = Bundle;
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MTL_HEADER_SEARCH_PATHS = "$(HOME)/JUCE/modules/juce_audio_processors/format_types/VST3_SDK $(SRCROOT)/../../JuceLibraryCode $(HOME)/JUCE/modules $(HOME)/JUCE/modules/juce_audio_plugin_client/AU";
-				OTHER_LDFLAGS = "-bundle -lMiniShimmer";
-				PRODUCT_BUNDLE_IDENTIFIER = com.yourcompany.MiniShimmer;
+				OTHER_LDFLAGS = "-bundle -lMiniShimmer -Wl,-ld_classic";
+				PRODUCT_BUNDLE_IDENTIFIER = com.DirektDSP.MiniShimmer;
 				PRODUCT_NAME = "MiniShimmer";
 				USE_HEADERMAP = NO;
 				VALID_ARCHS = "i386 x86_64 arm64 arm64e";

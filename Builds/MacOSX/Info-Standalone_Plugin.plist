@@ -8,7 +8,7 @@
     <key>CFBundleIconFile</key>
     <string></string>
     <key>CFBundleIdentifier</key>
-    <string>com.yourcompany.MiniShimmer</string>
+    <string>com.DirektDSP.MiniShimmer</string>
     <key>CFBundleName</key>
     <string>MiniShimmer</string>
     <key>CFBundleDisplayName</key>
@@ -22,7 +22,7 @@
     <key>CFBundleVersion</key>
     <string>1.0.0</string>
     <key>NSHumanReadableCopyright</key>
-    <string></string>
+    <string>All Rights Reserved</string>
     <key>NSHighResolutionCapable</key>
     <true/>
   </dict>
